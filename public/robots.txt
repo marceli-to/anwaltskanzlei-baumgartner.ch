@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anwaltskanzlei-baumgartner.ch/sitemap.xml
