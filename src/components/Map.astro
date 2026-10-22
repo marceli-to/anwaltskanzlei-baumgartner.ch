@@ -1,0 +1,26 @@
+---
+// Mapbox map with the office and the visitor parking, ported from the immosite.ch starter (module:map).
+// Mapbox (~1.5 MB) is only loaded on pages with a map; without a token the area stays empty, with no error.
+import { map } from '../data/site';
+import { officeMarker, parkingMarker } from '../lib/markers';
+
+const config = { token: import.meta.env.PUBLIC_MAPBOX_TOKEN ?? '', ...map };
+---
+
+<div class="aspect-square sm:aspect-[674/369] w-full bg-neutral-100">
+  <!-- h-full instead of absolute inset-0: Mapbox sets position: relative on the container -->
+  <div data-map={JSON.stringify(config)} role="region" aria-label="Karte mit Kanzlei und Besucherparkplätzen" class="size-full opacity-0 transition-opacity duration-700"></div>
+</div>
+
+<ul class="mt-12 flex flex-wrap gap-x-32 gap-y-8 text-sm" aria-label="Legende">
+  <li class="flex items-center gap-8"><Fragment set:html={officeMarker(20)} />Kanzlei</li>
+  <li class="flex items-center gap-8"><Fragment set:html={parkingMarker(16)} />Besucherparkplätze</li>
+</ul>
+
+<script>
+  import { initMap } from '../scripts/map';
+
+  document.querySelectorAll<HTMLElement>('[data-map]').forEach((el) => {
+    initMap(el).catch((error) => console.error('Map could not be loaded:', error));
+  });
+</script>

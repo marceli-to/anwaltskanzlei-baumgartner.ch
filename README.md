@@ -22,6 +22,10 @@ Herd proxies **https://anwaltskanzlei-baumgartner.ch.test** to the dev server (`
 - `src/components/Panel.astro` – the photo panel with "Better Call Andy". Positions are pixels from the 1920 × 1080 XD artboards multiplied by `--u` (see `src/styles/global.css`).
 - `src/assets/` – images, optimised by Astro at build time.
 
+## Map
+
+The Kontakt page shows a Mapbox map (ported from the immosite.ch starter's `map` module) with the office and the visitor parking; markers and style in `src/data/site.ts`. The public token comes from `PUBLIC_MAPBOX_TOKEN` in `.env` (not committed, see `.env.example`) and has to allow `https://anwaltskanzlei-baumgartner.ch` and `https://anwaltskanzlei-baumgartner.ch.test` in the Mapbox account, otherwise the tiles return 403. `deploy` builds locally, so `.env` must be present when building.
+
 ## Icons and Open Graph image
 
 Favicons, app icons and `public/og.png` (1200 × 630) are rendered from the HTML sources in `scripts/assets/` with headless Chrome and ImageMagick: `npm run assets`. The icon is a stand-in mark from the design (the condensed "A" on black) until there is a logo.
@@ -29,7 +33,7 @@ Favicons, app icons and `public/og.png` (1200 × 630) are rendered from the HTML
 ## Fonts
 
 - **Host Grotesk** (body text), self-hosted from Fontsource.
-- **Antonio** stands in for **TT Bluescreens Pro Bold** (the display type in the design, which used the trial version). Once a web licence is bought from TypeType, put the WOFF2 into `src/assets/fonts/`, point the `--font-antonio` entry in `astro.config.mjs` at it, and set `--fs` in `global.css` to `1`.
+- **Anton** (display type: "Better Call Andy", the CTA, the icon), self-hosted from Fontsource. The XD artboards were set in TT Bluescreens, so `--fs` in `global.css` scales Anton down to Bluescreens' cap height and width.
 
 ## Design
 

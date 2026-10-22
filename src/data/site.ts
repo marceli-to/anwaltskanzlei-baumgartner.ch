@@ -29,3 +29,16 @@ export const legalNav = [
 
 /** "+41 78 343 69 13" → "tel:+41783436913" */
 export const tel = (phone: string) => `tel:${phone.replace(/\s/g, '')}`;
+
+/** Kontakt map (Mapbox). Coordinates are [longitude, latitude], the order Mapbox uses. */
+export const map = {
+  // Greyscale house style, as on the immosite.ch projects
+  style: 'mapbox://styles/marcelitoooo/ck16ms7m51nlo1cmwnqrbjuyq?optimize=true',
+  zoom: 15.5,
+  markers: [
+    // Kronenstrasse 9 (swisstopo geocoder)
+    { kind: 'office', title: 'Anwaltskanzlei Dr. iur. Andreas Baumgartner', coordinates: [8.725383, 47.242119] },
+    // TODO: position of the visitor parking, still to be confirmed by the client
+    { kind: 'parking', title: 'Besucherparkplätze (gelb markiert)', coordinates: [8.7258, 47.2419] },
+  ],
+} as const;

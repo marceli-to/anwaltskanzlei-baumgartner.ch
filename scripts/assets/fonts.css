@@ -1,4 +1,4 @@
 /* The site's fonts, loaded straight from node_modules for the screenshots */
 @font-face { font-family: "Host Grotesk"; src: url("../../node_modules/@fontsource-variable/host-grotesk/files/host-grotesk-latin-wght-normal.woff2") format("woff2"); font-weight: 300 800; }
-@font-face { font-family: "Antonio"; src: url("../../node_modules/@fontsource/antonio/files/antonio-latin-700-normal.woff2") format("woff2"); font-weight: 700; }
+@font-face { font-family: "Anton"; src: url("../../node_modules/@fontsource/anton/files/anton-latin-400-normal.woff2") format("woff2"); font-weight: 400; }
 html, body { margin: 0; background: transparent; }

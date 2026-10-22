@@ -10,6 +10,8 @@ export default defineConfig({
   server: { host: '127.0.0.1', port: 4322 },
   vite: {
     plugins: [tailwindcss()],
+    // mapbox-gl (~1.9 MB) is its own chunk, loaded only on the Kontakt page
+    build: { chunkSizeWarningLimit: 2000 },
     server: { allowedHosts: ['anwaltskanzlei-baumgartner.ch.test'] },
   },
   // Self-hosted from Fontsource, latin only (German and every name on the site fall within it).
@@ -26,14 +28,14 @@ export default defineConfig({
       },
     },
     {
-      // Stand-in for TT Bluescreens Pro Bold (the design uses the trial version; needs a web licence from TypeType)
+      // Display type ("Better Call Andy", the CTA). Anton has a single, already heavy weight.
       provider: fontProviders.local(),
-      name: 'Antonio',
-      cssVariable: '--font-antonio',
+      name: 'Anton',
+      cssVariable: '--font-anton',
       fallbacks: ['Arial Narrow', 'sans-serif'],
       options: {
         variants: [
-          { src: ['@fontsource/antonio/files/antonio-latin-700-normal.woff2'], weight: 700, style: 'normal' },
+          { src: ['@fontsource/anton/files/anton-latin-400-normal.woff2'], weight: 400, style: 'normal' },
         ],
       },
     },

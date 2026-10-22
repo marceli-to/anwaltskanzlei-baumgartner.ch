@@ -34,7 +34,7 @@
 
 @theme inline {
   --font-sans: var(--font-host-grotesk);
-  --font-display: var(--font-antonio);
+  --font-display: var(--font-anton);
 }
 
 /* No orphans in running text, even line lengths in headings */
@@ -49,11 +49,11 @@
 
 /* The side panel is positioned like the artboard: one --u is one design pixel, scaled down
    with the viewport width and height so the composition never breaks out of the panel.
-   --fs shrinks the display type: Antonio (the stand-in) runs much larger than TT Bluescreens at the
-   same size. Set it to 1 once the licensed font is in. */
+   --fs shrinks the display type: the artboards were set in TT Bluescreens, and Anton at the same size runs
+   much larger, so it is scaled to Bluescreens' cap height and width. */
 .panel {
   --u: min(1px, calc(100vw / 1920), calc(100svh / 1080));
-  --fs: 0.76;
+  --fs: 0.73;
 }
 @media (width < 64rem) {
   .panel {
