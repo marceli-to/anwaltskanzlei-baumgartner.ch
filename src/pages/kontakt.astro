@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact, tel } from '../data/site';
+
+const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${contact.street}, ${contact.postalCode} ${contact.city}`)}`;
+const [user, domain] = contact.email.split('@');
+const link = 'underline decoration-transparent underline-offset-4 transition-colors hover:decoration-ink';
+---
+
+<Base title="Kontakt" description={`${contact.firm}, ${contact.street}, ${contact.postalCode} ${contact.city}. Telefon ${contact.phones[0]}, E-Mail ${contact.email}.`}>
+  <h1 class="text-[24px] lg:text-3xl font-bold leading-37">Kontakt</h1>
+
+  <div class="mt-16 lg:mt-30 max-w-[950px] space-y-25">
+    <p>Rufen Sie an oder schreiben Sie uns: Wir melden uns persönlich und behandeln Ihr Anliegen vertraulich.</p>
+
+    <address class="not-italic">
+      {contact.firm}<br />
+      {contact.street}<br />
+      {contact.postalCode} {contact.city}
+    </address>
+
+    <dl class="grid grid-cols-[auto_1fr] gap-x-16 lg:gap-x-12 gap-y-25">
+      <dt class="font-bold">Telefon:</dt>
+      <dd>
+        {contact.phones.map((phone) => (
+          <a href={tel(phone)} class:list={['block w-fit', link]}>{phone}</a>
+        ))}
+      </dd>
+      <dt class="font-bold">E-Mail:</dt>
+      <dd><a href={`mailto:${contact.email}`} class={link}>{user}@<wbr />{domain}</a></dd>
+    </dl>
+
+    <section aria-labelledby="anfahrt">
+      <h2 id="anfahrt" class="font-bold">Anfahrt</h2>
+      <p>
+        Mit der S-Bahn (S7 ab Zürich HB) bis Bahnhof Stäfa, von dort zu Fuss in 7 Minuten (ca. 700 Meter).<br />
+        Gelb markierte Besucherparkplätze sind vorhanden.
+      </p>
+      <p class="mt-25">
+        <a href={mapUrl} class="inline-block border-b-4 border-ink pb-2 font-bold transition-colors hover:border-transparent">Auf der Karte anzeigen</a>
+      </p>
+    </section>
+  </div>
+</Base>

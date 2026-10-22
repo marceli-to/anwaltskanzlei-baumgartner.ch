@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { strafrecht, areas } from '../data/content';
+import hammer from '../assets/hammer.webp';
+
+const heading = 'text-[19px] lg:text-xl font-bold leading-28';
+---
+
+<Base title="Rechtsgebiete" description="Strafrecht, Wirtschaftsstrafrecht, Verwaltungs- und Polizeirecht, Zivilrecht und weitere Rechtsgebiete der Anwaltskanzlei Dr. iur. Andreas Baumgartner in Stäfa.">
+  <h1 class="sr-only">Rechtsgebiete</h1>
+  <p class="max-w-[860px] text-[22px] lg:text-3xl font-bold leading-[1.15] lg:leading-30">
+    Die Anwaltskanzlei Dr. iur. Andreas Baumgartner vertritt und berät Privatpersonen, Unternehmen und Gemeinwesen. Im Fokus stehen die folgenden Rechtsgebiete:
+  </p>
+
+  <div class="mt-32 lg:mt-37 grid md:grid-cols-[499fr_557fr] gap-y-40 leading-[1.4] lg:leading-28">
+    <div class="md:pr-40">
+      <section aria-labelledby="strafrecht">
+        <h2 id="strafrecht" class={heading}>Strafrecht</h2>
+        <ul class="dash-list">
+          {strafrecht.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+      <Image
+        src={hammer}
+        alt=""
+        widths={[396, 792]}
+        sizes="(min-width: 64rem) 396px, 70vw"
+        class="w-[70%] md:w-[79%] max-w-[396px] ml-auto md:ml-[25%] mt-16 md:-mt-60 mix-blend-multiply"
+      />
+    </div>
+
+    <div class="md:border-l md:border-ink md:pl-40 md:self-start space-y-28">
+      {areas.map(({ title, items }) => (
+        <section>
+          <h2 class={heading}>{title}</h2>
+          {items && (
+            <ul class="dash-list">
+              {items.map((item) => <li>{item}</li>)}
+            </ul>
+          )}
+        </section>
+      ))}
+    </div>
+  </div>
+</Base>

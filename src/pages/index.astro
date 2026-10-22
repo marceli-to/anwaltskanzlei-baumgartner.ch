@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { focus } from '../data/content';
+import waage from '../assets/waage.webp';
+
+---
+
+<Base>
+  <h1 class="max-w-[931px] text-[30px] lg:text-4xl font-bold leading-[1.125] lg:text-wrap">
+    Anwaltskanzlei Dr. iur. Andreas Baumgartner – Recht am Zürichsee
+  </h1>
+
+  <div class="mt-32 lg:mt-54 max-w-[964px] space-y-25">
+    <p>
+      <!-- From lg every sentence starts on a new line, as in the design -->
+      <span class="lg:block">Die Anwaltskanzlei Dr. iur. Andreas Baumgartner berät und vertritt Privatpersonen, Unternehmen und Gemeinwesen vor sämtlichen Gerichten und Behörden.</span>{' '}
+      <span class="lg:block">Die Kerngebiete liegen im Strafrecht, Verwaltungsrecht (insbesondere Polizeirecht) und internen Untersuchungen.</span>{' '}
+      <span class="lg:block">Sie werden persönlich, mit maximalem Engagement, Fachkompetenz und Konsequenz betreut.</span>{' '}
+      <span class="lg:block">Sofern zielführend, werden Spezialisten aus dem In- und Ausland beigezogen.</span>
+    </p>
+    <p>Sitz der Anwaltskanzlei ist Stäfa am Zürichsee.</p>
+  </div>
+
+  <!-- From lg the scale sits top right and the list starts below its upper two thirds, as in the design -->
+  <div class="@container max-w-[964px] mt-40 lg:mt-16">
+    <div class="flex flex-col-reverse lg:grid lg:grid-cols-[13.5%_42.8%_35%_8.7%] lg:grid-rows-[18.26cqw_auto]">
+      <section class="lg:col-start-2 lg:col-span-3 lg:row-start-2 lg:pt-8" aria-labelledby="schwerpunkte">
+        <h2 id="schwerpunkte" class="text-[21px] lg:text-2xl font-bold leading-26">Unsere Schwerpunkte</h2>
+        <ul class="dash-list mt-20 lg:mt-26 leading-[1.4] lg:leading-26 max-w-[560px]">
+          {focus.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+      <Image
+        src={waage}
+        alt=""
+        widths={[337, 674]}
+        sizes="(min-width: 64rem) 337px, 60vw"
+        class="w-[60%] max-w-[337px] self-end lg:self-start mb-16 lg:mb-0 lg:w-full lg:max-w-none lg:col-start-3 lg:row-start-1 lg:row-span-2 mix-blend-multiply"
+      />
+    </div>
+  </div>
+</Base>

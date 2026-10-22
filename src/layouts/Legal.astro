@@ -1,0 +1,18 @@
+---
+// Impressum and Datenschutzerklärung: plain text in the usual layout
+import Base from './Base.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <h1 class="text-[24px] lg:text-3xl font-bold leading-37">{title}</h1>
+  <article class="mt-16 lg:mt-30 max-w-[760px] [&_h2]:mt-40 [&_h2]:mb-8 [&_h2]:font-bold [&_p+p]:mt-16 [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-ink/30 [&_a]:transition-colors [&_a:hover]:decoration-ink">
+    <slot />
+  </article>
+</Base>

@@ -1,0 +1,29 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { contact, tel } from '../data/site';
+---
+
+<Legal title="Impressum" description={`Impressum der ${contact.firm}, Stäfa.`}>
+  <h2>Verantwortlich für den Inhalt</h2>
+  <p>
+    {contact.firm}<br />
+    {contact.street}<br />
+    {contact.postalCode} {contact.city}<br />
+    Schweiz
+  </p>
+  <p>
+    Telefon: {contact.phones.map((phone, i) => <>{i > 0 && ' / '}<a href={tel(phone)}>{phone}</a></>)}<br />
+    E-Mail: <a href={`mailto:${contact.email}`}>{contact.email}</a>
+  </p>
+
+  <h2>Berufsbezeichnung und Aufsicht</h2>
+  <p>Dr. iur. Andreas Baumgartner ist Rechtsanwalt, eingetragen im Anwaltsregister des Kantons Zürich. Aufsichtsbehörde ist die Aufsichtskommission über die Anwältinnen und Anwälte im Kanton Zürich.</p>
+  <p>Massgebend sind das Bundesgesetz über die Freizügigkeit der Anwältinnen und Anwälte (BGFA) und das Anwaltsgesetz des Kantons Zürich, einsehbar unter <a href="https://www.fedlex.admin.ch/eli/cc/2002/153/de">fedlex.admin.ch</a> und <a href="https://www.zh.ch/de/politik-staat/gesetze-beschluesse/gesetzessammlung.html">zh.ch</a>.</p>
+
+  <h2>Haftung</h2>
+  <p>Die Inhalte dieser Website dienen der allgemeinen Information und ersetzen keine Rechtsberatung im Einzelfall. Für ihre Richtigkeit, Vollständigkeit und Aktualität wird keine Gewähr übernommen. Für die Inhalte verlinkter Websites sind ausschliesslich deren Betreiber verantwortlich.</p>
+  <p>Die Kontaktaufnahme über diese Website, per E-Mail oder Telefon begründet noch kein Mandatsverhältnis.</p>
+
+  <h2>Bildnachweis</h2>
+  <p>Berge: Mathis Belloncle, <a href="https://unsplash.com/">Unsplash</a></p>
+</Legal>

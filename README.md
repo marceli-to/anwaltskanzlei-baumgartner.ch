@@ -1,48 +1,36 @@
-<p align="center">
-<picture>
-    <source srcset="https://statamic.com/assets/branding/squircle/statamic-logo-lime-white.svg" media="(prefers-color-scheme: dark)">
-    <img align="center" width="350" alt="Statamic Logo" src="https://statamic.com/assets/branding/squircle/statamic-logo-lime.svg">
-</picture>
-</p>
+# anwaltskanzlei-baumgartner.ch
 
-## About Statamic
+Static website of the Anwaltskanzlei Dr. iur. Andreas Baumgartner, Stäfa. Built with Astro 7 and Tailwind 4; all content lives in this repo.
 
-Statamic is the flat-first, Laravel + Git powered CMS designed for building beautiful, easy to manage websites.
+## Development
 
-> [!NOTE]
-> This repository contains the code for a fresh Statamic project that is installed via the Statamic CLI tool.
->
-> The code for the Statamic Composer package itself can be found at the [Statamic core package repository][cms-repo].
+```sh
+nvm use          # Node 24 (.nvmrc)
+npm install
+npm run dev      # background dev server on http://127.0.0.1:4322 (astro dev status | logs | stop)
+npm run build    # astro check + static build into dist/
+```
 
+Herd proxies **https://anwaltskanzlei-baumgartner.ch.test** to the dev server (`herd proxy anwaltskanzlei-baumgartner.ch http://127.0.0.1:4322 --secure`), so it only works while `npm run dev` is running.
 
-## Learning Statamic
+## Structure
 
-Statamic has extensive [documentation][docs]. We dedicate a significant amount of time and energy every day to improving them, so if something is unclear, feel free to open issues for anything you find confusing or incomplete. We are happy to consider anything you feel will make the docs and CMS better.
+- `src/pages/` – one file per page (Home, Rechtsgebiete, Team, Kontakt, Impressum, Datenschutz, 404). Texts are written directly in the pages.
+- `src/data/site.ts` – address, phone numbers, email and navigation, used across pages, the footer and the JSON-LD.
+- `src/data/content.ts` – the lists (Schwerpunkte, Rechtsgebiete, Eckdaten), shared by the pages and `llms.txt`.
+- `src/pages/llms.txt.ts`, `robots.txt.ts` – generated at build time; the sitemap comes from `@astrojs/sitemap`.
+- `src/components/Panel.astro` – the photo panel with "Better Call Andy". Positions are pixels from the 1920 × 1080 XD artboards multiplied by `--u` (see `src/styles/global.css`).
+- `src/assets/` – images, optimised by Astro at build time.
 
-## Support
+## Icons and Open Graph image
 
-We provide official developer support on [Statamic Pro](https://statamic.com/pricing) projects. Community-driven support is available via [GitHub Discussions](https://github.com/statamic/cms/discussions) and in [Discord][discord].
+Favicons, app icons and `public/og.png` (1200 × 630) are rendered from the HTML sources in `scripts/assets/` with headless Chrome and ImageMagick: `npm run assets`. The icon is a stand-in mark from the design (the condensed "A" on black) until there is a logo.
 
+## Fonts
 
-## Contributing
+- **Host Grotesk** (body text), self-hosted from Fontsource.
+- **Antonio** stands in for **TT Bluescreens Pro Bold** (the display type in the design, which used the trial version). Once a web licence is bought from TypeType, put the WOFF2 into `src/assets/fonts/`, point the `--font-antonio` entry in `astro.config.mjs` at it, and set `--fs` in `global.css` to `1`.
 
-Thank you for considering contributing to Statamic! We simply ask that you review the [contribution guide][contribution] before you open issues or send pull requests.
+## Design
 
-
-## Code of Conduct
-
-In order to ensure that the Statamic community is welcoming to all and generally a rad place to belong, please review and abide by the [Code of Conduct](https://github.com/statamic/cms/wiki/Code-of-Conduct).
-
-
-## Important Links
-
-- [Statamic Main Site](https://statamic.com)
-- [Statamic Documentation][docs]
-- [Statamic Core Package Repo][cms-repo]
-- [Statamic Migrator](https://github.com/statamic/migrator)
-- [Statamic Discord][discord]
-
-[docs]: https://statamic.dev/
-[discord]: https://statamic.com/discord
-[contribution]: https://github.com/statamic/cms/blob/master/CONTRIBUTING.md
-[cms-repo]: https://github.com/statamic/cms
+Adobe XD (one screen per link): [Home](https://xd.adobe.com/view/2f0c13dc-9f92-4159-b73f-ecc575242c25-7a5f/), [Rechtsgebiete](https://xd.adobe.com/view/5bcc7ec6-a639-48a1-82aa-92ce9f4deab8-0e9f/), [Team](https://xd.adobe.com/view/9d085ca2-ead9-4601-a48b-e09acef801cc-c85b/), [Kontakt](https://xd.adobe.com/view/c380b790-9970-41b7-b8fc-70635e9a2f7b-96d3/).

@@ -1,0 +1,29 @@
+---
+import { nav } from '../data/site';
+
+const path = Astro.url.pathname.replace(/\/?$/, '/');
+---
+
+<header class="order-first bg-white">
+  <nav aria-label="Hauptnavigation" class="flex justify-center sm:justify-end h-60 lg:h-84 px-16 sm:px-32 lg:pr-[clamp(32px,8.85vw,170px)]">
+    <ul class="flex gap-20 sm:gap-40 xl:gap-70">
+      {nav.map(({ label, href }) => {
+        const active = path === href;
+        return (
+          <li>
+            <a
+              href={href}
+              aria-current={active ? 'page' : undefined}
+              class:list={[
+                'block pt-18 lg:pt-33 pb-6 text-[16px] lg:text-md leading-24 border-b-4 transition-colors',
+                active ? 'border-ink' : 'border-transparent hover:border-ink',
+              ]}
+            >
+              {label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </nav>
+</header>

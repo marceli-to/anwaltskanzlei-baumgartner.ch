@@ -1,0 +1,14 @@
+{
+  "name": "Anwaltskanzlei Dr. iur. Andreas Baumgartner",
+  "short_name": "Kanzlei Baumgartner",
+  "description": "Anwaltskanzlei in Stäfa am Zürichsee: Strafrecht, Wirtschaftsstrafrecht, Verwaltungs- und Polizeirecht, interne Untersuchungen und Zivilrecht.",
+  "lang": "de-CH",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

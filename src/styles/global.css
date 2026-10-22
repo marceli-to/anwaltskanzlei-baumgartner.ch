@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  /* 1 spacing unit = 1px, so values can be read straight off the XD artboards (1920 × 1080) */
+  --spacing: 0.0625rem;
+
+  --color-ink: #000;
+  --color-mint: #4ed57c;
+
+  /* Font sizes without a paired line-height; the design sets its own per text block */
+  --text-*: initial;
+  --text-sm: 0.9375rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.4375rem;
+  --text-2xl: 1.5625rem;
+  --text-3xl: 1.75rem;
+  --text-4xl: 2.5rem;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --default-transition-timing-function: var(--ease-out);
+}
+
+/* Laptops: the content column is far narrower than on the 1920 artboard, so the type steps down */
+@media (width >= 64rem) and (width < 96rem) {
+  :root {
+    --text-lg: 1.0625rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.375rem;
+    --text-3xl: 1.5rem;
+    --text-4xl: 2.125rem;
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-host-grotesk);
+  --font-display: var(--font-antonio);
+}
+
+/* No orphans in running text, even line lengths in headings */
+@layer base {
+  body {
+    text-wrap: pretty;
+  }
+  h1, h2 {
+    text-wrap: balance;
+  }
+}
+
+/* The side panel is positioned like the artboard: one --u is one design pixel, scaled down
+   with the viewport width and height so the composition never breaks out of the panel.
+   --fs shrinks the display type: Antonio (the stand-in) runs much larger than TT Bluescreens at the
+   same size. Set it to 1 once the licensed font is in. */
+.panel {
+  --u: min(1px, calc(100vw / 1920), calc(100svh / 1080));
+  --fs: 0.76;
+}
+@media (width < 64rem) {
+  .panel {
+    --u: min(0.62px, calc(100vw / 640));
+  }
+}
+
+/* The photo: from lg the panel is upright and the photo hangs from the top, as in the design. Where the panel
+   is wider than tall (the hero below lg, very wide and short windows) the crop moves down so the peak sits
+   in the lower half and the type keeps the sky behind it. */
+.panel-photo {
+  object-position: 50% 32%;
+  transform-origin: 50% 32%;
+}
+@media (width >= 64rem) {
+  .panel-photo {
+    object-position: 50% 0;
+    transform-origin: 50% 0;
+  }
+}
+@media (width >= 64rem) and (min-aspect-ratio: 2 / 1) {
+  .panel-photo {
+    object-position: 50% 45%;
+    transform-origin: 50% 45%;
+  }
+}
+
+/* Dash lists as in the design: "– item" with wrapped lines aligned to the text */
+.dash-list > li {
+  position: relative;
+  padding-left: 1.15em;
+}
+.dash-list > li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

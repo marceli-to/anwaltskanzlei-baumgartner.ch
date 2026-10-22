@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { facts } from '../data/content';
+import snowboard from '../assets/andy-snowboard.jpg';
+
+---
+
+<Base title="Team" description="Dr. iur. Andreas Baumgartner: ehemaliger Staatsanwalt des Kantons Zürich und Kommandant der Stadtpolizei Uster, heute Rechtsanwalt in Stäfa.">
+  <h1 class="text-[24px] lg:text-3xl font-bold leading-37">Zur Person</h1>
+
+  <div class="mt-16 lg:mt-30 max-w-[950px] tracking-[-0.02em] space-y-25">
+    <p>
+      Gut acht Jahre lang führte Dr. iur. Andreas Baumgartner als Staatsanwalt des Kantons Zürich Strafverfahren, zuletzt als Spezialist für Geldwäscherei, Rechtshilfe, Einziehung und Beamtendelikte. Er weiss, wie Behörden ermitteln, welche prozessualen Möglichkeiten bestehen und worauf es am Ende ankommt – gegebenenfalls auch vor Gericht.
+    </p>
+    <p>
+      Danach leitete er das Geschäftsfeld Sicherheit der Stadt Uster und war unter anderem verantwortlich für die Blaulichtorganisationen, darunter die Stadtpolizei und die Seerettung Uster. Von 2021 bis 2026 präsidierte er die Vereinigung Kommunaler Polizeikorps des Kantons Zürich.
+    </p>
+    <p>
+      Strafrecht, Vertragsrecht sowie Verwaltungs- und Polizeirecht kennt er aus dem Praxisalltag – auch aus der Perspektive derjenigen, die Verantwortung tragen.
+    </p>
+    <p>
+      Abseits des Büros geht er in den wärmeren Jahreszeiten seiner Leidenschaft als Golfer nach (Single-Handicap). Im Winter ist er als passionierter Snowboarder in den Bergen unterwegs.<br />
+      Auch dort gilt: Wer springt, sollte das Gelände kennen.
+    </p>
+  </div>
+
+  <div class="mt-40 lg:mt-50 lg:ml-138 max-w-[812px]">
+    <section aria-labelledby="eckdaten">
+      <h2 id="eckdaten" class="text-[21px] lg:text-2xl font-bold leading-25">Eckdaten</h2>
+      <ul class="dash-list mt-16 lg:mt-25">
+        {facts.map((fact) => <li>{fact}</li>)}
+      </ul>
+    </section>
+
+    <div class="mt-32 lg:mt-40 grid grid-cols-2 gap-12 lg:gap-17 max-w-[812px]">
+      <Image
+        src={snowboard}
+        alt="Andreas Baumgartner mit dem Snowboard in der Luft, über einer verschneiten Piste"
+        widths={[398, 796, 1169]}
+        sizes="(min-width: 64rem) 398px, 50vw"
+        class="w-full aspect-[398/499] object-cover"
+      />
+    </div>
+  </div>
+</Base>
