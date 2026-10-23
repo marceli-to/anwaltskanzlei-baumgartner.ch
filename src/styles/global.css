@@ -21,6 +21,14 @@
   --text-3xl: clamp(1.875rem, 1.716rem + 0.6536vw, 2.5rem); /* 30–40 px: home heading */
   --text-3xl--line-height: 1.125;
 
+  /* Display sizes for the photo panel (Anton): logo, the line below it, the CTA circle */
+  --text-logo: clamp(3rem, 6vw, 5.5rem);
+  --text-logo--line-height: 1;
+  --text-logo-sub: clamp(1.1rem, 1.6vw, 1.6rem);
+  --text-logo-sub--line-height: 1.05;
+  --text-cta: 1.3rem;
+  --text-cta--line-height: 1.05;
+
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --default-transition-timing-function: var(--ease-out);
 }
@@ -28,11 +36,6 @@
 @theme inline {
   --font-sans: var(--font-host-grotesk);
   --font-display: var(--font-anton);
-}
-
-/* Height of the footer bar; the sticky photo panel reaches under it (Base.astro, Panel.astro, Footer.astro) */
-:root {
-  --footer-height: calc(var(--spacing) * 11);
 }
 
 /* No orphans in running text, even line lengths in headings */
@@ -45,34 +48,20 @@
   }
 }
 
-/* The side panel is positioned like the artboard: one --u is one design pixel, scaled down
-   with the viewport width and height so the composition never breaks out of the panel.
-   --fs shrinks the display type: the artboards were set in TT Bluescreens, and Anton at the same size runs
-   much larger, so it is scaled to Bluescreens' cap height and width. */
-.panel {
-  --u: min(1px, calc(100vw / 1920), calc(100svh / 1080));
-  --fs: 0.73;
-}
-@media (width < 64rem) {
-  .panel {
-    --u: min(0.62px, calc(100vw / 640));
-  }
-}
-
-/* The photo: from lg the panel is upright and the photo hangs from the top, as in the design. Where the panel
-   is wider than tall (the hero below lg, very wide and short windows) the crop moves down so the peak sits
+/* The photo: from md the panel is upright and the photo hangs from the top, as in the design. Where the panel
+   is wider than tall (the hero below md, very wide and short windows) the crop moves down so the peak sits
    in the lower half and the type keeps the sky behind it. */
 .panel-photo {
   object-position: 50% 32%;
   transform-origin: 50% 32%;
 }
-@media (width >= 64rem) {
+@media (width >= 48rem) {
   .panel-photo {
     object-position: 50% 0;
     transform-origin: 50% 0;
   }
 }
-@media (width >= 64rem) and (min-aspect-ratio: 2 / 1) {
+@media (width >= 48rem) and (min-aspect-ratio: 2 / 1) {
   .panel-photo {
     object-position: 50% 45%;
     transform-origin: 50% 45%;

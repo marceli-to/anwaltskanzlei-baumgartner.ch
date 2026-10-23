@@ -4,9 +4,10 @@ import { nav } from '../data/site';
 const path = Astro.url.pathname.replace(/\/?$/, '/');
 ---
 
-<header class="order-first bg-white">
-  <nav aria-label="Hauptnavigation" class="flex justify-center sm:justify-end h-15 lg:h-21 px-4 sm:px-8 lg:pr-12 xl:pr-24 2xl:pr-40">
-    <ul class="flex gap-5 sm:gap-10 xl:gap-16">
+{/* Sticky white bar across the content column */}
+<header class="sticky top-0 z-10 bg-white">
+  <nav aria-label="Hauptnavigation" class="px-6 pt-10 pb-4 md:pr-12 md:pl-10 xl:pr-18 xl:pl-14 2xl:pr-24 2xl:pl-20">
+    <ul class="flex flex-wrap justify-end gap-x-6 gap-y-4 sm:gap-x-10 lg:gap-x-14 2xl:gap-x-16">
       {nav.map(({ label, href }) => {
         const active = path === href;
         return (
@@ -15,7 +16,7 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
               href={href}
               aria-current={active ? 'page' : undefined}
               class:list={[
-                'block pt-4.5 lg:pt-8 pb-1.5 text-sm border-b-4 transition-colors',
+                'block pb-1.5 text-sm border-b-3 transition-colors',
                 active ? 'border-ink' : 'border-transparent hover:border-ink',
               ]}
             >

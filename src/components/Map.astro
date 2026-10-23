@@ -8,7 +8,7 @@ const config = { token: import.meta.env.PUBLIC_MAPBOX_TOKEN ?? '', ...map };
 ---
 
 <div class="aspect-square sm:aspect-video w-full bg-neutral-100">
-  <!-- h-full instead of absolute inset-0: Mapbox sets position: relative on the container -->
+  {/* h-full instead of absolute inset-0: Mapbox sets position: relative on the container */}
   <div data-map={JSON.stringify(config)} role="region" aria-label="Karte mit Kanzlei und Besucherparkplätzen" class="size-full opacity-0 transition-opacity duration-700"></div>
 </div>
 

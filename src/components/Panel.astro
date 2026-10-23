@@ -1,37 +1,27 @@
 ---
-// The photo panel with "Better Call Andy": left and sticky from lg, a hero block above the content below.
-// Positions are design pixels from the XD artboard, multiplied by --u (see global.css).
-// Below lg the hero is 880 units tall: the CTA circle ends at 849, so the height grows with the contents.
+// The photo panel with "Better Call Andy": a hero block above the content below md, from md the left column,
+// sticky and one viewport high. Logo at the top, the CTA circle at the bottom right.
 import { Image } from 'astro:assets';
 import mountain from '../assets/mountain.jpg';
 ---
 
-<aside class="panel lg:col-span-2 relative overflow-hidden h-[calc(880*var(--u))] lg:sticky lg:top-0 lg:h-svh lg:min-h-[calc(900*var(--u))] lg:-mb-(--footer-height)">
+<aside class="relative isolate overflow-hidden flex flex-col justify-between h-[85svh] px-6 pt-12 pb-22 md:sticky md:top-0 md:col-start-1 md:row-start-1 md:row-span-2 md:self-start md:h-dvh md:px-10 xl:px-18 2xl:px-20">
   <Image
     src={mountain}
     alt=""
     widths={[640, 960, 1280, 1640]}
-    sizes="(min-width: 64rem) 44vw, 100vw"
+    sizes="(min-width: 48rem) 40vw, 100vw"
     loading="eager"
     fetchpriority="high"
-    class="panel-photo absolute inset-0 size-full object-cover scale-110"
+    class="panel-photo absolute inset-0 -z-10 size-full object-cover scale-110"
   />
 
-  <a href="/" class="absolute left-[calc(92*var(--u))] top-[calc(40*var(--u))] font-display text-ink">
-    <span class="block uppercase text-[calc(120*var(--u)*var(--fs))] leading-[calc(90*var(--u))]">Better<br />Call<br />Andy</span>
-    <span class="block mt-[calc(36*var(--u))] w-[calc(223*var(--u))] h-[calc(5*var(--u))] bg-ink" aria-hidden="true"></span>
-    <span class="block mt-[calc(27*var(--u))] text-[calc(35*var(--u)*var(--fs))] leading-[calc(27*var(--u))]">Dr. iur.<br />Andreas Baumgartner<br />Rechtsanwalt</span>
+  <a href="/" class="flex flex-col self-start font-display text-ink">
+    <span class="border-b-5 pb-6 uppercase text-logo">Better<br />Call<br />Andy</span>
+    <span class="mt-6 text-logo-sub">Dr. iur.<br />Andreas Baumgartner<br />Rechtsanwalt</span>
   </a>
 
-  <!-- Text and bar are centred as one block, so the padding stays even whatever the font's width. Whole-pixel
-       geometry and its own layer keep the text from jumping when the rotation ends -->
-  <a
-    href="/kontakt/"
-    class="absolute right-[round(calc(89*var(--u)),1px)] top-[round(calc(707*var(--u)),1px)] size-[round(calc(142*var(--u)),2px)] flex items-center justify-center rounded-full bg-white font-display text-ink transition-transform duration-300 will-change-transform hover:-rotate-8"
-  >
-    <span class="flex flex-col">
-      <span class="text-[calc(27*var(--u)*var(--fs))] leading-[calc(21*var(--u))]">Kontaktieren<br />Sie uns</span>
-      <span class="mt-[calc(8*var(--u))] h-[calc(5*var(--u))] bg-ink" aria-hidden="true"></span>
-    </span>
+  <a href="/kontakt/" class="grid place-content-center size-32 self-end rounded-full bg-white font-display text-cta text-ink transition-transform duration-300 hover:scale-105">
+    <span class="border-b-4 pb-1.5">Kontaktieren<br />Sie uns</span>
   </a>
 </aside>

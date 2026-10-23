@@ -2,8 +2,9 @@
 import { legalNav } from '../data/site';
 ---
 
-<footer class="relative z-10 bg-ink text-white">
-  <nav aria-label="Rechtliches" class="min-h-(--footer-height) flex items-center px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 py-2.5">
+{/* From md the footer spans both columns and lies on top of the photo panel */}
+<footer class="relative z-10 bg-ink text-white md:col-span-full md:row-start-2">
+  <nav aria-label="Rechtliches" class="px-6 py-2.5 md:px-10 xl:px-18 2xl:px-20">
     <ul class="flex flex-wrap items-center text-xs">
       {legalNav.map(({ label, href }, i) => (
         <li class="flex items-center">

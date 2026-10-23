@@ -42,7 +42,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="de-CH" class="overflow-y-scroll">
+<html lang="de-CH" class="overflow-y-scroll md:overscroll-none">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -64,7 +64,7 @@ const jsonLd = {
     <meta property="og:image:alt" content="Better Call Andy – Anwaltskanzlei Dr. iur. Andreas Baumgartner, Recht am Zürichsee" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Favicons, app icons and og.png are rendered from scripts/assets/ with `npm run assets` -->
+    {/* Favicons, app icons and og.png are rendered from scripts/assets/ with `npm run assets` */}
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.png" type="image/png" sizes="96x96" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -78,18 +78,20 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="bg-white text-ink antialiased font-sans text-base selection:bg-ink selection:text-white">
-    <!-- From lg: photo panel (2 of 5 columns) and content (3 of 5) side by side -->
-    <div class="flex flex-col lg:grid lg:grid-cols-5 min-h-[calc(100svh-var(--footer-height))]">
+    {/* From md the photo panel spans both rows, so it stays sticky to the end and the footer lies on top of it:
+       on a short page the grid is one viewport high and the footer covers the bottom of the photo */}
+    <div class="grid grid-rows-[auto_1fr_auto] md:grid-cols-[40%_minmax(0,1fr)] md:grid-rows-[1fr_auto] min-h-dvh">
       <Panel />
-      <div class="contents lg:col-span-3 lg:flex lg:flex-col">
+      {/* One wrapper for header and main, so the sticky header stays put across the whole content */}
+      <div class="flex flex-col md:col-start-2 md:row-start-1">
         <Header />
-        <main class="flex-1 min-w-0 px-4 sm:px-8 lg:pl-12 xl:pl-16 2xl:pl-20 pt-10 lg:pt-16 pb-16 lg:pb-8">
+        <main class="flex-1 px-6 pt-18 pb-24 md:pr-12 md:pl-10 xl:pr-18 xl:pl-14 2xl:pr-24 2xl:pl-20">
           <div class="max-w-5xl">
             <slot />
           </div>
         </main>
       </div>
+      <Footer />
     </div>
-    <Footer />
   </body>
 </html>
