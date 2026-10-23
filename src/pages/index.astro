@@ -11,7 +11,7 @@ import waage from '../assets/waage.webp';
     Anwaltskanzlei Dr. iur. Andreas Baumgartner – Recht am Zürichsee
   </h1>
 
-  <div class="mt-8 lg:mt-14 max-w-4xl space-y-6">
+  <div class="mt-32 lg:mt-56 max-w-4xl space-y-24">
     <p>
       {/* From lg every sentence starts on a new line, as in the design */}
       <span class="lg:block">Die Anwaltskanzlei Dr. iur. Andreas Baumgartner berät und vertritt Privatpersonen, Unternehmen und Gemeinwesen vor sämtlichen Gerichten und Behörden.</span>{' '}
@@ -23,17 +23,17 @@ import waage from '../assets/waage.webp';
   </div>
 
   {/* The scale sits on the right; from lg the list moves up beside its lower half, as in the design */}
-  <div class="max-w-4xl mt-10 lg:mt-4 flex flex-col">
+  <div class="max-w-4xl mt-40 lg:mt-16 flex flex-col">
     <Image
       src={waage}
       alt=""
       widths={[336, 672]}
       sizes="(min-width: 64rem) 336px, 60vw"
-      class="w-3/5 max-w-84 self-end lg:mr-20 mb-4 lg:mb-0 mix-blend-multiply"
+      class="w-3/5 max-w-336 self-end lg:mr-80 mb-16 lg:mb-0 mix-blend-multiply"
     />
-    <section class="lg:ml-32 lg:-mt-24" aria-labelledby="schwerpunkte">
+    <section class="lg:ml-128 lg:-mt-96" aria-labelledby="schwerpunkte">
       <h2 id="schwerpunkte" class="text-xl font-bold">Unsere Schwerpunkte</h2>
-      <ul class="dash-list mt-5 lg:mt-6 leading-snug max-w-xl">
+      <ul class="dash-list mt-20 lg:mt-24 leading-snug max-w-xl">
         {focus.map((item) => <li>{item}</li>)}
       </ul>
     </section>

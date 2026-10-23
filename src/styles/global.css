@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  /* 1 spacing unit = 1px (in rem), so px-12 is 12px. Padding, margins and gaps stay on a 4px rhythm */
+  --spacing: 0.0625rem;
+
   --color-ink: #000;
 
   /* Type scale, Tailwind names. Each size grows linearly from the mobile value at a 390 px viewport
@@ -27,7 +30,7 @@
   --text-logo-sub: clamp(1.1rem, 1.6vw, 1.6rem);
   --text-logo-sub--line-height: 1.05;
   --text-cta: 1.3rem;
-  --text-cta--line-height: 1.05;
+  --text-cta--line-height: 1.375rem; /* 22 px, so the text block is a whole number of pixels high */
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --default-transition-timing-function: var(--ease-out);

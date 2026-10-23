@@ -13,8 +13,8 @@ const heading = 'text-lg font-bold';
     Die Anwaltskanzlei Dr. iur. Andreas Baumgartner vertritt und berät Privatpersonen, Unternehmen und Gemeinwesen. Im Fokus stehen die folgenden Rechtsgebiete:
   </p>
 
-  <div class="mt-8 lg:mt-9 grid lg:grid-cols-2 gap-y-10 leading-snug">
-    <div class="lg:pr-10">
+  <div class="mt-32 lg:mt-36 grid lg:grid-cols-2 gap-y-40 leading-snug">
+    <div class="lg:pr-40">
       <section aria-labelledby="strafrecht">
         <h2 id="strafrecht" class={heading}>Strafrecht</h2>
         <ul class="dash-list">
@@ -26,11 +26,11 @@ const heading = 'text-lg font-bold';
         alt=""
         widths={[396, 792]}
         sizes="(min-width: 64rem) 396px, 70vw"
-        class="w-2/3 lg:w-4/5 max-w-100 ml-auto mt-4 lg:mt-0 mix-blend-multiply"
+        class="w-2/3 lg:w-4/5 max-w-400 ml-auto mt-16 lg:mt-0 mix-blend-multiply"
       />
     </div>
 
-    <div class="lg:border-l lg:border-ink lg:pl-10 lg:self-start space-y-7">
+    <div class="lg:border-l lg:border-ink lg:pl-40 lg:self-start space-y-28">
       {areas.map(({ title, items }) => (
         <section>
           <h2 class={heading}>{title}</h2>

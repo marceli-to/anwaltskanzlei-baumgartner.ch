@@ -6,8 +6,8 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
 
 {/* Sticky white bar across the content column */}
 <header class="sticky top-0 z-10 bg-white">
-  <nav aria-label="Hauptnavigation" class="px-6 pt-10 pb-4 md:pr-12 md:pl-10 xl:pr-18 xl:pl-14 2xl:pr-24 2xl:pl-20">
-    <ul class="flex flex-wrap justify-end gap-x-6 gap-y-4 sm:gap-x-10 lg:gap-x-14 2xl:gap-x-16">
+  <nav aria-label="Hauptnavigation" class="px-24 pt-40 pb-16 md:pr-48 md:pl-40 xl:pr-72 xl:pl-56 2xl:pr-96 2xl:pl-80">
+    <ul class="flex flex-wrap justify-end gap-x-24 gap-y-16 sm:gap-x-40 md:gap-x-24 lg:gap-x-56 2xl:gap-x-64">
       {nav.map(({ label, href }) => {
         const active = path === href;
         return (
@@ -16,7 +16,7 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
               href={href}
               aria-current={active ? 'page' : undefined}
               class:list={[
-                'block pb-1.5 text-sm border-b-3 transition-colors',
+                'block pb-8 text-sm border-b-3 transition-colors',
                 active ? 'border-ink' : 'border-transparent hover:border-ink',
               ]}
             >

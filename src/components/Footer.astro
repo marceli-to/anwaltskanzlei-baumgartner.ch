@@ -4,11 +4,11 @@ import { legalNav } from '../data/site';
 
 {/* From md the footer spans both columns and lies on top of the photo panel */}
 <footer class="relative z-10 bg-ink text-white md:col-span-full md:row-start-2">
-  <nav aria-label="Rechtliches" class="px-6 py-2.5 md:px-10 xl:px-18 2xl:px-20">
+  <nav aria-label="Rechtliches" class="px-24 py-12 md:px-40 xl:px-72 2xl:px-80">
     <ul class="flex flex-wrap items-center text-xs">
       {legalNav.map(({ label, href }, i) => (
         <li class="flex items-center">
-          {i > 0 && <span class="px-2.5" aria-hidden="true">I</span>}
+          {i > 0 && <span class="px-8" aria-hidden="true">I</span>}
           <a href={href} class="underline decoration-transparent underline-offset-4 transition-colors hover:decoration-white">{label}</a>
         </li>
       ))}

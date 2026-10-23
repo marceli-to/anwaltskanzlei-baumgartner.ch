@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 import mountain from '../assets/mountain.jpg';
 ---
 
-<aside class="relative isolate overflow-hidden flex flex-col justify-between h-[85svh] px-6 pt-12 pb-22 md:sticky md:top-0 md:col-start-1 md:row-start-1 md:row-span-2 md:self-start md:h-dvh md:px-10 xl:px-18 2xl:px-20">
+<aside class="relative isolate overflow-hidden flex flex-col justify-between h-[85svh] px-24 pt-48 pb-88 md:sticky md:top-0 md:col-start-1 md:row-start-1 md:row-span-2 md:self-start md:h-dvh md:px-40 xl:px-72 2xl:px-80">
   <Image
     src={mountain}
     alt=""
@@ -13,15 +13,17 @@ import mountain from '../assets/mountain.jpg';
     sizes="(min-width: 48rem) 40vw, 100vw"
     loading="eager"
     fetchpriority="high"
+    decoding="sync"
     class="panel-photo absolute inset-0 -z-10 size-full object-cover scale-110"
   />
 
   <a href="/" class="flex flex-col self-start font-display text-ink">
-    <span class="border-b-5 pb-6 uppercase text-logo">Better<br />Call<br />Andy</span>
-    <span class="mt-6 text-logo-sub">Dr. iur.<br />Andreas Baumgartner<br />Rechtsanwalt</span>
+    <span class="border-b-5 pb-24 uppercase text-logo">Better<br />Call<br />Andy</span>
+    <span class="mt-24 text-logo-sub">Dr. iur.<br />Andreas Baumgartner<br />Rechtsanwalt</span>
   </a>
 
-  <a href="/kontakt/" class="grid place-content-center size-32 self-end rounded-full bg-white font-display text-cta text-ink transition-transform duration-300 hover:scale-105">
-    <span class="border-b-4 pb-1.5">Kontaktieren<br />Sie uns</span>
+  {/* Its own layer and whole-pixel line heights keep the underline from jumping when the scale ends */}
+  <a href="/kontakt/" class="grid place-content-center size-152 self-end rounded-full bg-white font-display text-cta text-ink transition-transform duration-300 will-change-transform hover:scale-105">
+    <span class="border-b-4 pb-8">Kontaktieren<br />Sie uns</span>
   </a>
 </aside>
