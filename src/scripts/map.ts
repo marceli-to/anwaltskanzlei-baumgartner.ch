@@ -15,6 +15,42 @@ const LOCALE = {
 
 const markerHtml = { office: officeMarker(47), parking: parkingMarker(30) };
 
+// The photo panel's palette (sampled from src/assets/mountain.jpg): blush and lilac sky, grey-lavender haze,
+// white snow, navy rock. Layers are matched by source layer and type, not by id, so this survives changes
+// to the house style.
+const PALETTE = {
+  land: '#f1e9ee',
+  green: '#e4d3e0',
+  building: '#d3cddb',
+  water: '#b4b8cb',
+  road: '#ffffff',
+  roadCase: '#d3cddb',
+  line: '#8e8aa0',
+  text: '#293347',
+  halo: 'rgba(255, 255, 255, 0.9)',
+};
+
+function applyPalette(map: import('mapbox-gl').Map) {
+  for (const layer of map.getStyle()?.layers ?? []) {
+    const id = layer.id;
+    const source = 'source-layer' in layer ? layer['source-layer'] : undefined;
+    const set = (property: string, value: string) => map.setPaintProperty(id, property as never, value as never);
+
+    if (layer.type === 'background') set('background-color', PALETTE.land);
+    else if (layer.type === 'symbol') {
+      set('text-color', PALETTE.text);
+      set('text-halo-color', PALETTE.halo);
+    } else if (source === 'water' || source === 'waterway') set(layer.type === 'fill' ? 'fill-color' : 'line-color', PALETTE.water);
+    else if (source === 'building') set('fill-color', PALETTE.building);
+    else if (source === 'landuse' || source === 'landuse_overlay') set('fill-color', PALETTE.green);
+    else if (source === 'road' && layer.type === 'line') {
+      // Rails, ferries and lifts as thin dark lines; streets and paths white like the snow
+      const thin = /rail|ferry|aerial/.test(id);
+      set('line-color', thin ? PALETTE.line : id.endsWith('-case') ? PALETTE.roadCase : PALETTE.road);
+    } else if (source === 'admin' || source === 'aeroway') set(layer.type === 'fill' ? 'fill-color' : 'line-color', PALETTE.line);
+  }
+}
+
 export async function initMap(el: HTMLElement) {
   const config: Config = JSON.parse(el.dataset.map ?? '{}');
   if (!config.token) return;
@@ -32,6 +68,8 @@ export async function initMap(el: HTMLElement) {
     locale: LOCALE,
   });
   map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'top-right');
+  // Before the first frame, so the house colours never flash up
+  map.once('style.load', () => applyPalette(map));
 
   const bounds = new mapboxgl.LngLatBounds();
   for (const marker of config.markers) {

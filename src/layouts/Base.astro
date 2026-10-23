@@ -77,13 +77,14 @@ const jsonLd = {
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
-  <body class="bg-white text-ink antialiased font-sans text-[17px] lg:text-lg leading-[1.4] lg:leading-25 selection:bg-ink selection:text-white">
-    <div class="flex flex-col lg:grid lg:grid-cols-[38.85%_minmax(0,1fr)] min-h-[calc(100svh-45px)]">
+  <body class="bg-white text-ink antialiased font-sans text-base selection:bg-ink selection:text-white">
+    <!-- From lg: photo panel (2 of 5 columns) and content (3 of 5) side by side -->
+    <div class="flex flex-col lg:grid lg:grid-cols-5 min-h-[calc(100svh-var(--footer-height))]">
       <Panel />
-      <div class="contents lg:flex lg:flex-col">
+      <div class="contents lg:col-span-3 lg:flex lg:flex-col">
         <Header />
-        <main class="flex-1 px-16 sm:px-32 lg:pl-[clamp(32px,4.375vw,84px)] lg:pr-32 pt-40 lg:pt-63 pb-64 lg:pb-32">
-          <div class="max-w-[1060px]">
+        <main class="flex-1 min-w-0 px-4 sm:px-8 lg:pl-12 xl:pl-16 2xl:pl-20 pt-10 lg:pt-16 pb-16 lg:pb-8">
+          <div class="max-w-5xl">
             <slot />
           </div>
         </main>

@@ -1,22 +1,23 @@
 ---
 // The photo panel with "Better Call Andy": left and sticky from lg, a hero block above the content below.
 // Positions are design pixels from the XD artboard, multiplied by --u (see global.css).
+// Below lg the hero is 880 units tall: the CTA circle ends at 849, so the height grows with the contents.
 import { Image } from 'astro:assets';
 import mountain from '../assets/mountain.jpg';
 ---
 
-<aside class="panel relative overflow-hidden h-[calc(880*var(--u))] lg:sticky lg:top-0 lg:h-svh lg:min-h-[calc(900*var(--u))] lg:-mb-45">
+<aside class="panel lg:col-span-2 relative overflow-hidden h-[calc(880*var(--u))] lg:sticky lg:top-0 lg:h-svh lg:min-h-[calc(900*var(--u))] lg:-mb-(--footer-height)">
   <Image
     src={mountain}
     alt=""
     widths={[640, 960, 1280, 1640]}
-    sizes="(min-width: 64rem) 43vw, 100vw"
+    sizes="(min-width: 64rem) 44vw, 100vw"
     loading="eager"
     fetchpriority="high"
     class="panel-photo absolute inset-0 size-full object-cover scale-110"
   />
 
-  <a href="/" class="absolute left-[calc(92*var(--u))] top-[calc(40*var(--u))] font-display tracking-[0.005em] text-ink">
+  <a href="/" class="absolute left-[calc(92*var(--u))] top-[calc(40*var(--u))] font-display text-ink">
     <span class="block uppercase text-[calc(120*var(--u)*var(--fs))] leading-[calc(90*var(--u))]">Better<br />Call<br />Andy</span>
     <span class="block mt-[calc(36*var(--u))] w-[calc(223*var(--u))] h-[calc(5*var(--u))] bg-ink" aria-hidden="true"></span>
     <span class="block mt-[calc(27*var(--u))] text-[calc(35*var(--u)*var(--fs))] leading-[calc(27*var(--u))]">Dr. iur.<br />Andreas Baumgartner<br />Rechtsanwalt</span>
@@ -26,7 +27,7 @@ import mountain from '../assets/mountain.jpg';
        geometry and its own layer keep the text from jumping when the rotation ends -->
   <a
     href="/kontakt/"
-    class="absolute right-[round(calc(89*var(--u)),1px)] top-[round(calc(707*var(--u)),1px)] size-[round(calc(142*var(--u)),2px)] flex items-center justify-center rounded-full bg-white font-display tracking-[0.005em] text-ink transition-transform duration-300 will-change-transform hover:-rotate-8"
+    class="absolute right-[round(calc(89*var(--u)),1px)] top-[round(calc(707*var(--u)),1px)] size-[round(calc(142*var(--u)),2px)] flex items-center justify-center rounded-full bg-white font-display text-ink transition-transform duration-300 will-change-transform hover:-rotate-8"
   >
     <span class="flex flex-col">
       <span class="text-[calc(27*var(--u)*var(--fs))] leading-[calc(21*var(--u))]">Kontaktieren<br />Sie uns</span>

@@ -7,9 +7,9 @@ import snowboard from '../assets/andy-snowboard.jpg';
 ---
 
 <Base title="Team" description="Dr. iur. Andreas Baumgartner: ehemaliger Staatsanwalt des Kantons Zürich und Kommandant der Stadtpolizei Uster, heute Rechtsanwalt in Stäfa.">
-  <h1 class="text-[24px] lg:text-3xl font-bold leading-37">Zur Person</h1>
+  <h1 class="text-2xl font-bold">Zur Person</h1>
 
-  <div class="mt-16 lg:mt-30 max-w-[950px] tracking-[-0.02em] space-y-25">
+  <div class="mt-4 lg:mt-8 max-w-4xl tracking-tight space-y-6">
     <p>
       Gut acht Jahre lang führte Dr. iur. Andreas Baumgartner als Staatsanwalt des Kantons Zürich Strafverfahren, zuletzt als Spezialist für Geldwäscherei, Rechtshilfe, Einziehung und Beamtendelikte. Er weiss, wie Behörden ermitteln, welche prozessualen Möglichkeiten bestehen und worauf es am Ende ankommt – gegebenenfalls auch vor Gericht.
     </p>
@@ -25,21 +25,21 @@ import snowboard from '../assets/andy-snowboard.jpg';
     </p>
   </div>
 
-  <div class="mt-40 lg:mt-50 lg:ml-138 max-w-[812px]">
+  <div class="mt-10 lg:mt-12 lg:ml-32 max-w-3xl">
     <section aria-labelledby="eckdaten">
-      <h2 id="eckdaten" class="text-[21px] lg:text-2xl font-bold leading-25">Eckdaten</h2>
-      <ul class="dash-list mt-16 lg:mt-25">
+      <h2 id="eckdaten" class="text-xl font-bold">Eckdaten</h2>
+      <ul class="dash-list mt-4 lg:mt-6">
         {facts.map((fact) => <li>{fact}</li>)}
       </ul>
     </section>
 
-    <div class="mt-32 lg:mt-40 grid grid-cols-2 gap-12 lg:gap-17 max-w-[812px]">
+    <div class="mt-8 lg:mt-10 grid grid-cols-2 gap-3 lg:gap-4">
       <Image
         src={snowboard}
         alt="Andreas Baumgartner mit dem Snowboard in der Luft, über einer verschneiten Piste"
         widths={[398, 796, 1169]}
         sizes="(min-width: 64rem) 398px, 50vw"
-        class="w-full aspect-[398/499] object-cover"
+        class="w-full aspect-4/5 object-cover"
       />
     </div>
   </div>

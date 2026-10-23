@@ -7,14 +7,14 @@ import { officeMarker, parkingMarker } from '../lib/markers';
 const config = { token: import.meta.env.PUBLIC_MAPBOX_TOKEN ?? '', ...map };
 ---
 
-<div class="aspect-square sm:aspect-[674/369] w-full bg-neutral-100">
+<div class="aspect-square sm:aspect-video w-full bg-neutral-100">
   <!-- h-full instead of absolute inset-0: Mapbox sets position: relative on the container -->
   <div data-map={JSON.stringify(config)} role="region" aria-label="Karte mit Kanzlei und Besucherparkplätzen" class="size-full opacity-0 transition-opacity duration-700"></div>
 </div>
 
-<ul class="mt-12 flex flex-wrap gap-x-32 gap-y-8 text-sm" aria-label="Legende">
-  <li class="flex items-center gap-8"><Fragment set:html={officeMarker(20)} />Kanzlei</li>
-  <li class="flex items-center gap-8"><Fragment set:html={parkingMarker(16)} />Besucherparkplätze</li>
+<ul class="mt-3 flex flex-wrap gap-x-8 gap-y-2 text-xs" aria-label="Legende">
+  <li class="flex items-center gap-2"><Fragment set:html={officeMarker(20)} />Kanzlei</li>
+  <li class="flex items-center gap-2"><Fragment set:html={parkingMarker(16)} />Besucherparkplätze</li>
 </ul>
 
 <script>

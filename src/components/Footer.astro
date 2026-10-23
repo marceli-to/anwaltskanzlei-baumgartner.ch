@@ -3,11 +3,11 @@ import { legalNav } from '../data/site';
 ---
 
 <footer class="relative z-10 bg-ink text-white">
-  <nav aria-label="Rechtliches" class="min-h-45 flex items-center px-16 sm:px-32 lg:px-[clamp(32px,4.8vw,92px)] py-10">
-    <ul class="flex flex-wrap items-center text-sm leading-20">
+  <nav aria-label="Rechtliches" class="min-h-(--footer-height) flex items-center px-4 sm:px-8 lg:px-12 xl:px-16 2xl:px-24 py-2.5">
+    <ul class="flex flex-wrap items-center text-xs">
       {legalNav.map(({ label, href }, i) => (
         <li class="flex items-center">
-          {i > 0 && <span class="px-10" aria-hidden="true">I</span>}
+          {i > 0 && <span class="px-2.5" aria-hidden="true">I</span>}
           <a href={href} class="underline decoration-transparent underline-offset-4 transition-colors hover:decoration-white">{label}</a>
         </li>
       ))}
