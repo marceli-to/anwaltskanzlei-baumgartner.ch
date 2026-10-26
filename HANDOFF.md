@@ -1,0 +1,43 @@
+# Handoff: anwaltskanzlei-baumgartner.ch
+
+State as of 2026-10-26. Read this together with `README.md` (setup, structure, map, deployment).
+
+## Where things stand
+
+- Static Astro site for the Anwaltskanzlei Dr. iur. Andreas Baumgartner, Stäfa, built from the Adobe XD design (links in the README). All pages are done: Home, Rechtsgebiete, Team, Kontakt, Impressum, Datenschutz, 404, plus the mobile layout with the black overlay menu.
+- **Staging** at https://staging.anwaltskanzlei-baumgartner.ch, deployed with `./deploy.sh`. `master` is pushed to github.com/marceli-to/anwaltskanzlei-baumgartner.ch. No other branches.
+- **Production** (https://anwaltskanzlei-baumgartner.ch) is not set up yet. `deploy.sh` only knows staging.
+
+## Stack
+
+- Astro 7.4, Vite 8.3, Tailwind 4.3, TypeScript 6.0.3. Node 24 via `.nvmrc` (run `nvm use`, the nvm default is older).
+- Mapbox GL for the Kontakt map; token in `.env` (`PUBLIC_MAPBOX_TOKEN`), allowed for the live, staging and `.test` domains.
+
+## Deployment
+
+- `./deploy.sh --dry-run`, then `./deploy.sh`. Only committed code is deployed: it builds a clean copy (with the local `.env` copied in) and rsyncs `dist/` to `unofibem@anwaltskanzlei-baumgartner.ch:/home/unofibem/www/staging.anwaltskanzlei-baumgartner.ch/public` (the subdomain's document root).
+- Staging only: the script appends `Header set X-Robots-Tag "noindex, nofollow"` to `.htaccess` and replaces `robots.txt` with `Disallow: /`. The repo's own `robots.txt`, sitemap, canonicals and `llms.txt` all point to the production domain.
+- SSH needs Marcel's password (no key on the server), so Marcel runs the deploy himself.
+- For production: add a target to `deploy.sh` without the two staging steps, and check the document root in the Hostpoint panel.
+
+## Fixed after the first staging deploy (2026-10-26)
+
+All committed and pushed; deploy once more to see them on staging.
+
+- **Hero parallax missing in the build:** the minifier folded `animation-timeline` into the `animation` shorthand, which can't set a timeline, so browsers dropped the rule. It's now written as longhands (`global.css`). Dev serves unminified CSS, so check scroll-driven animations in a build.
+- **Short pages scrolled on wide windows:** the panel's `min-h-[75vw]` (mobile hero) also applied from md and outgrew `md:h-dvh`. Now `max-md:min-h-[75vw]`.
+- **Dotted underline on the address (iOS):** Safari's data detectors. `<meta name="format-detection">` turns them off; phone numbers and email are real links anyway.
+- **Blue ring on the menu close button:** `showModal()` focused the close button. The script now focuses the dialog itself (`tabindex="-1"`); the button keeps a white `focus-visible` ring for keyboards.
+- **Body text** raised on mobile from 17 px to 18 px (still 20 px at 1920), line height 1.25 → 1.35. Marcel still has to look at the long pages on a phone; 1.3 is the fallback if it feels loose.
+
+## Open
+
+- Logo: the icon and favicons use a stand-in mark (condensed "A" on black) until there is a logo (`npm run assets`).
+- Impressum / Datenschutz texts not reviewed by a lawyer.
+- Production go-live: DNS / document root, deploy target, Mapbox already allows the domain.
+
+## Working with Marcel
+
+- He tests on staging and on his phone and reports issues in short messages; fix, verify in the browser at 390 px and desktop sizes, then commit and push.
+- "bcp" means build, commit and push.
+- Copy is in German (Swiss spelling, "ss" instead of "ß").
