@@ -1,11 +1,11 @@
 ---
-// The photo panel with "Better Call Andy": a hero block above the content below md, from md the left column,
+// The photo panel with "Better Call Andy": a compact hero block above the content below md, from md the left column,
 // sticky and one viewport high. Logo at the top, the CTA circle at the bottom right.
 import { Image } from 'astro:assets';
 import mountain from '../assets/mountain.jpg';
 ---
 
-<aside class="relative isolate overflow-hidden flex flex-col justify-between h-[85svh] px-24 pt-48 pb-88 md:sticky md:top-0 md:col-start-1 md:row-start-1 md:row-span-2 md:self-start md:h-dvh md:px-40 xl:px-72 2xl:px-80">
+<aside class="panel relative isolate overflow-hidden flex flex-col justify-between min-h-[75vw] px-24 pt-24 pb-24 md:sticky md:top-0 md:col-start-1 md:row-start-1 md:row-span-2 md:self-start md:h-dvh md:pt-48 md:pb-88 md:px-40 xl:px-72 2xl:px-80">
   <Image
     src={mountain}
     alt=""
@@ -18,12 +18,13 @@ import mountain from '../assets/mountain.jpg';
   />
 
   <a href="/" class="flex flex-col self-start font-display text-ink">
-    <span class="border-b-5 pb-24 uppercase text-logo">Better<br />Call<br />Andy</span>
-    <span class="mt-24 text-logo-sub">Dr. iur.<br />Andreas Baumgartner<br />Rechtsanwalt</span>
+    {/* Below md "Better Call" shares a line, as in the mobile design */}
+    <span class="border-b-4 md:border-b-5 pb-12 md:pb-24 uppercase text-logo">Better<br class="max-md:hidden" /> Call<br />Andy</span>
+    <span class="mt-12 md:mt-24 text-logo-sub">Dr. iur.<br />Andreas Baumgartner<br />Rechtsanwalt</span>
   </a>
 
   {/* Its own layer and whole-pixel line heights keep the underline from jumping when the scale ends */}
-  <a href="/kontakt/" class="grid place-content-center size-152 self-end rounded-full bg-white font-display text-cta text-ink transition-transform duration-300 will-change-transform hover:scale-105">
-    <span class="border-b-4 pb-8">Kontaktieren<br />Sie uns</span>
+  <a href="/kontakt/" class="grid place-content-center size-104 md:size-152 self-end max-md:-mt-56 rounded-full bg-white font-display text-cta-sm md:text-cta text-ink transition-transform duration-300 will-change-transform hover:scale-105">
+    <span class="border-b-3 md:border-b-4 pb-4 md:pb-8">Kontaktieren<br />Sie uns</span>
   </a>
 </aside>

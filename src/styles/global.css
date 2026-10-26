@@ -31,6 +31,8 @@
   --text-logo-sub--line-height: 1.05;
   --text-cta: 1.3rem;
   --text-cta--line-height: 1.375rem; /* 22 px, so the text block is a whole number of pixels high */
+  --text-cta-sm: 0.9375rem; /* the smaller circle below md */
+  --text-cta-sm--line-height: 1rem;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --default-transition-timing-function: var(--ease-out);
@@ -71,6 +73,26 @@
   }
 }
 
+/* Parallax below md: while the hero scrolls out, the photo trails behind at 60 % of the scroll speed. The gap it
+   opens at the top stays above the viewport. Browsers without scroll-driven animations keep a still photo. */
+@supports (animation-timeline: view()) {
+  @media (width < 48rem) and (prefers-reduced-motion: no-preference) {
+    .panel {
+      view-timeline: --panel;
+    }
+    .panel-photo {
+      animation: panel-parallax linear both;
+      animation-timeline: --panel;
+      animation-range: exit;
+    }
+  }
+}
+@keyframes panel-parallax {
+  to {
+    transform: translateY(40%);
+  }
+}
+
 /* Dash lists as in the design: "– item" with wrapped lines aligned to the text */
 .dash-list > li {
   position: relative;
@@ -80,6 +102,27 @@
   content: "–";
   position: absolute;
   left: 0;
+}
+
+/* The mobile menu: a black overlay that fades in and out; the page behind it does not scroll */
+.menu {
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out), overlay 0.3s allow-discrete, display 0.3s allow-discrete;
+}
+.menu[open] {
+  opacity: 1;
+}
+@starting-style {
+  .menu[open] {
+    opacity: 0;
+  }
+}
+.menu::backdrop {
+  background: transparent;
+}
+html:has(.menu[open]) {
+  overflow: hidden;
+  scrollbar-gutter: stable;
 }
 
 @media (prefers-reduced-motion: reduce) {
