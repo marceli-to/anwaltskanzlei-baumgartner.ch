@@ -24,7 +24,16 @@ Herd proxies **https://anwaltskanzlei-baumgartner.ch.test** to the dev server (`
 
 ## Map
 
-The Kontakt page shows a Mapbox map (ported from the immosite.ch starter's `map` module) with the office and the visitor parking; markers and style in `src/data/site.ts`. The public token comes from `PUBLIC_MAPBOX_TOKEN` in `.env` (not committed, see `.env.example`) and has to allow `https://anwaltskanzlei-baumgartner.ch` and `https://anwaltskanzlei-baumgartner.ch.test` in the Mapbox account, otherwise the tiles return 403. `deploy` builds locally, so `.env` must be present when building.
+The Kontakt page shows a Mapbox map (ported from the immosite.ch starter's `map` module) with the office and the visitor parking; markers and style in `src/data/site.ts`. The public token comes from `PUBLIC_MAPBOX_TOKEN` in `.env` (not committed, see `.env.example`) and has to allow `https://anwaltskanzlei-baumgartner.ch`, `https://staging.anwaltskanzlei-baumgartner.ch` and `https://anwaltskanzlei-baumgartner.ch.test` in the Mapbox account, otherwise the tiles return 403. `deploy.sh` builds locally and copies `.env` into the build, so it must be present.
+
+## Deployment
+
+```sh
+./deploy.sh --dry-run   # show what would change on the server
+./deploy.sh
+```
+
+`deploy.sh` builds the committed state into `dist/` and syncs it with rsync to `/home/unofibem/www/staging.anwaltskanzlei-baumgartner.ch/public` on Hostpoint (the web root of https://staging.anwaltskanzlei-baumgartner.ch), deleting files that no longer exist. `.htaccess` comes from `public/`, with an `X-Robots-Tag: noindex` header appended for staging; the server's `.well-known/` is left alone. No PHP or Node is needed on the server.
 
 ## Icons and Open Graph image
 
