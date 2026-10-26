@@ -80,8 +80,12 @@
     .panel {
       view-timeline: --panel;
     }
+    /* Longhands only: the build's minifier folds animation-timeline into the animation shorthand, which
+       cannot set a timeline, and browsers then drop the whole declaration */
     .panel-photo {
-      animation: panel-parallax linear both;
+      animation-name: panel-parallax;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
       animation-timeline: --panel;
       animation-range: exit;
     }
