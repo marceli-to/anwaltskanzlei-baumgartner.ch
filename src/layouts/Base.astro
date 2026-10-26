@@ -46,6 +46,8 @@ const jsonLd = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* No automatic links from iOS (dotted underline on the address); phone numbers and email are linked already */}
+    <meta name="format-detection" content="telephone=no, address=no, email=no, date=no" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
