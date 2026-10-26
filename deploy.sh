@@ -41,8 +41,10 @@ cp .env "$STAGE/.env"
 ln -s "$PWD/node_modules" "$STAGE/node_modules"
 (cd "$STAGE" && npm run build --silent)
 
-# Keep staging out of search engines (a robots.txt Disallow would hide this header from crawlers)
+# Keep staging out of search engines: a noindex header on every response, and a robots.txt
+# that blocks all crawlers instead of pointing them to the production sitemap
 printf '\n# Staging only (added by deploy.sh)\nHeader set X-Robots-Tag "noindex, nofollow"\n' >> "$STAGE/dist/.htaccess"
+printf 'User-agent: *\nDisallow: /\n' > "$STAGE/dist/robots.txt"
 
 # Folders 755, files 644 (macOS ships openrsync, which has no --chmod)
 chmod -R u=rwX,go=rX "$STAGE/dist"
