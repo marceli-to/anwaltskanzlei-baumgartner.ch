@@ -13,8 +13,8 @@
   --text-xs--line-height: 1.25;
   --text-sm: clamp(1rem, 0.9681rem + 0.1307vw, 1.125rem); /* 16–18 px: navigation */
   --text-sm--line-height: 1.5;
-  --text-base: clamp(1.0625rem, 1.015rem + 0.1961vw, 1.25rem); /* 17–20 px: body text */
-  --text-base--line-height: 1.25;
+  --text-base: clamp(1.125rem, 1.074rem + 0.1307vw, 1.25rem); /* 18–20 px: body text */
+  --text-base--line-height: 1.35;
   --text-lg: clamp(1.1875rem, 1.124rem + 0.2614vw, 1.4375rem); /* 19–23 px: Rechtsgebiete headings */
   --text-lg--line-height: 1.25;
   --text-xl: clamp(1.3125rem, 1.249rem + 0.2614vw, 1.5625rem); /* 21–25 px: section headings */
