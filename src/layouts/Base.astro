@@ -81,8 +81,10 @@ const jsonLd = {
   </head>
   <body class="bg-white text-ink antialiased font-sans text-base selection:bg-ink selection:text-white">
     {/* From md the photo panel spans both rows, so it stays sticky to the end and the footer lies on top of it:
-       on a short page the grid is one viewport high and the footer covers the bottom of the photo */}
-    <div class="grid grid-rows-[auto_1fr_auto] md:grid-cols-[40%_minmax(0,1fr)] md:grid-rows-[1fr_auto] min-h-dvh">
+       on a short page the grid is one viewport high and the footer covers the bottom of the photo.
+       Below md the height is svh: dvh changes whenever the iOS toolbar shows or hides (on every scroll up), and
+       the relayout makes the parallax photo jump */}
+    <div class="grid grid-rows-[auto_1fr_auto] md:grid-cols-[40%_minmax(0,1fr)] md:grid-rows-[1fr_auto] min-h-svh md:min-h-dvh">
       <Panel />
       {/* One wrapper for header and main, so the sticky header stays put across the whole content */}
       <div class="flex flex-col md:col-start-2 md:row-start-1">
