@@ -53,17 +53,17 @@
   }
 }
 
-/* The photo: from md the panel is upright and the photo hangs from the top, as in the design. Where the panel
-   is wider than tall (the hero below md, very wide and short windows) the crop moves down so the peak sits
-   in the lower half and the type keeps the sky behind it. */
+/* The photo: below md the hero is roughly square and the type is a fixed size while the photo scales with the
+   width, so the crop moves up by a width-dependent amount that keeps the peak just below "Rechtsanwalt".
+   From md the panel is upright and the photo hangs from the top, as in the design. Where the panel is much
+   wider than tall (very wide and short windows) the crop moves down. */
 .panel-photo {
-  object-position: 50% 32%;
-  transform-origin: 50% 32%;
+  object-position: 50% min(0px, calc(15rem - 68vw));
+  transform-origin: 50% 0;
 }
 @media (width >= 48rem) {
   .panel-photo {
     object-position: 50% 0;
-    transform-origin: 50% 0;
   }
 }
 @media (width >= 48rem) and (min-aspect-ratio: 2 / 1) {
