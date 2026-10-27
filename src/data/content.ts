@@ -2,7 +2,7 @@
 
 /** Home, "Unsere Schwerpunkte" */
 export const focus = [
-  'Strafrecht / Jugendstrafrecht',
+  'Strafrecht\u00A0/ Jugendstrafrecht',
   'Wirtschaftsstrafrecht (insbesondere Rechtshilfe, Vermögensabschöpfung, Geldwäscherei)',
   'Verwaltungsrecht (insbesondere Polizeirecht)',
   'Interne Untersuchungen',
@@ -11,8 +11,8 @@ export const focus = [
 
 /** Rechtsgebiete, left column */
 export const strafrecht = [
-  'Allgemeines Strafrecht / Strafverteidigungen',
-  'Geschädigtenvertretung / Opferhilfe',
+  'Allgemeines Strafrecht\u00A0/ Strafverteidigungen',
+  'Geschädigtenvertretung\u00A0/ Opferhilfe',
   'Formulierung von Strafanzeigen',
   'Vermögensdelikte',
   'Wirtschaftsstrafrecht',
@@ -35,7 +35,7 @@ export const areas: { title: string; items?: string[] }[] = [
   { title: 'Administrativuntersuchungen' },
   { title: 'Strassenverkehrsrecht' },
   { title: 'Polizeirecht' },
-  { title: 'Arbeitsrecht / Öffentliches Personalrecht' },
+  { title: 'Arbeitsrecht\u00A0/ Öffentliches Personalrecht' },
   { title: 'Zivilrecht', items: ['Familienrecht', 'Vertragsrecht', 'Arbeitsrecht', 'Gesellschaftsrecht', 'Versicherungsrecht'] },
   {
     title: 'Verwaltungsrecht',
@@ -53,6 +53,6 @@ export const facts = [
   'Dr. iur., Universität Zürich (2014, magna cum laude)',
   'Rechtsanwalt im Kanton Zürich (2008)',
   'Staatsanwalt im Kanton Zürich (2009–2017)',
-  'Geschäftsfeldleiter Sicherheit / Kommandant Stadtpolizei Uster (2017–2026)',
+  'Geschäftsfeldleiter Sicherheit\u00A0/ Kommandant Stadtpolizei Uster (2017–2026)',
   'Dozententätigkeit für Polizei, Staatsanwaltschaft und Verwaltung',
 ];

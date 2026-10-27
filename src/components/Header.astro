@@ -47,7 +47,7 @@ const path = Astro.url.pathname.replace(/\/?$/, '/');
       </button>
 
       <nav aria-label="Hauptnavigation" class="mt-56">
-        <ul class="space-y-16 font-display text-logo uppercase">
+        <ul class="space-y-16 font-display text-logo leading-none uppercase">
           {nav.map(({ label, href }) => {
             const active = path === href;
             return (
