@@ -36,9 +36,8 @@ export const map = {
   style: 'mapbox://styles/marcelitoooo/ck16ms7m51nlo1cmwnqrbjuyq?optimize=true',
   zoom: 15.5,
   markers: [
-    // Kronenstrasse 9 (swisstopo geocoder)
-    { kind: 'office', title: 'Anwaltskanzlei Dr. iur. Andreas Baumgartner', coordinates: [8.725383, 47.242119] },
-    // TODO: position of the visitor parking, still to be confirmed by the client
-    { kind: 'parking', title: 'Besucherparkplätze (gelb markiert)', coordinates: [8.7258, 47.2419] },
+    // Kronenstrasse 9, positions from the client
+    { kind: 'office', title: 'Anwaltskanzlei Dr. iur. Andreas Baumgartner', coordinates: [8.72532, 47.24219] },
+    { kind: 'parking', title: 'Besucherparkplätze (gelb markiert)', coordinates: [8.725634, 47.242375] },
   ],
 } as const;

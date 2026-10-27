@@ -16,6 +16,7 @@ Die Kanzlei berät und vertritt Privatpersonen, Unternehmen und Gemeinwesen vor 
 ## Kontakt
 
 - Adresse: ${contact.firm}, ${contact.street}, ${contact.postalCode} ${contact.city}, Schweiz
+- Die Büros befinden sich im 3. Stock des Gebäudes ${contact.street}.
 - Telefon: ${contact.phones.join(', ')}
 - E-Mail: ${contact.email}
 - Anfahrt: S-Bahn S7 ab Zürich HB bis Bahnhof Stäfa, von dort 7 Minuten zu Fuss (ca. 700 m). Besucherparkplätze sind vorhanden.
