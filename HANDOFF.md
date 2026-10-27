@@ -24,7 +24,7 @@ State as of 2026-10-26. Read this together with `README.md` (setup, structure, m
 
 All committed and pushed; deploy once more to see them on staging.
 
-- **Hero parallax missing in the build:** the minifier folded `animation-timeline` into the `animation` shorthand, which can't set a timeline, so browsers dropped the rule. It's now written as longhands (`global.css`). Dev serves unminified CSS, so check scroll-driven animations in a build.
+- **Hero parallax removed:** the photo jumped on mobile when scrolling up (Chrome), also after switching the page height to svh, so the parallax is gone and the photo is still.
 - **Short pages scrolled on wide windows:** the panel's `min-h-[75vw]` (mobile hero) also applied from md and outgrew `md:h-dvh`. Now `max-md:min-h-[75vw]`.
 - **Dotted underline on the address (iOS):** Safari's data detectors. `<meta name="format-detection">` turns them off; phone numbers and email are real links anyway.
 - **Blue ring on the menu close button:** `showModal()` focused the close button. The script now focuses the dialog itself (`tabindex="-1"`); the button keeps a white `focus-visible` ring for keyboards.

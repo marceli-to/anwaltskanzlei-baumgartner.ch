@@ -73,30 +73,6 @@
   }
 }
 
-/* Parallax below md: while the hero scrolls out, the photo trails behind at 60 % of the scroll speed. The gap it
-   opens at the top stays above the viewport. Browsers without scroll-driven animations keep a still photo. */
-@supports (animation-timeline: view()) {
-  @media (width < 48rem) and (prefers-reduced-motion: no-preference) {
-    .panel {
-      view-timeline: --panel;
-    }
-    /* Longhands only: the build's minifier folds animation-timeline into the animation shorthand, which
-       cannot set a timeline, and browsers then drop the whole declaration */
-    .panel-photo {
-      animation-name: panel-parallax;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: --panel;
-      animation-range: exit;
-    }
-  }
-}
-@keyframes panel-parallax {
-  to {
-    transform: translateY(40%);
-  }
-}
-
 /* Dash lists as in the design: "– item" with wrapped lines aligned to the text */
 .dash-list > li {
   position: relative;
