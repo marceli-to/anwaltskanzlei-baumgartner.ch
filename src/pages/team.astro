@@ -2,6 +2,9 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import { facts } from '../data/content';
+import portrait from '../assets/andy-portrait.jpg';
+import park from '../assets/andy-park.jpg';
+import golf from '../assets/andy-golf.jpg';
 import snowboard from '../assets/andy-snowboard.jpg';
 
 ---
@@ -35,11 +38,32 @@ import snowboard from '../assets/andy-snowboard.jpg';
 
     <div class="mt-32 lg:mt-40 grid grid-cols-2 gap-12 lg:gap-16">
       <Image
+        src={portrait}
+        alt="Andreas Baumgartner in dunkelblauem Jackett und Halstuch, auf einem Weg neben einem Bahnviadukt"
+        widths={[796, 1569]}
+        sizes="(min-width: 64rem) 398px, 50vw"
+        class="w-full aspect-4/5 object-cover object-[60%_center]"
+      />
+      <Image
+        src={park}
+        alt="Andreas Baumgartner sitzt im Herbst auf einer Holzbank in einem Park"
+        widths={[398, 612]}
+        sizes="(min-width: 64rem) 398px, 50vw"
+        class="w-full aspect-4/5 object-cover object-top"
+      />
+      <Image
         src={snowboard}
         alt="Andreas Baumgartner mit dem Snowboard in der Luft, über einer verschneiten Piste"
         widths={[398, 796, 1169]}
         sizes="(min-width: 64rem) 398px, 50vw"
         class="w-full aspect-4/5 object-cover"
+      />
+      <Image
+        src={golf}
+        alt="Andreas Baumgartner beim Abschlag auf einem Golfplatz in den Bergen"
+        widths={[398, 796, 975]}
+        sizes="(min-width: 64rem) 398px, 50vw"
+        class="w-full aspect-4/5 object-cover object-left"
       />
     </div>
   </div>
