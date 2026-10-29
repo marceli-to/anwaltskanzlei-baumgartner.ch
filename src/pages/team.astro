@@ -12,7 +12,16 @@ import snowboard from '../assets/andy-snowboard.jpg';
 <Base title="Team" description="Dr. iur. Andreas Baumgartner: ehemaliger Staatsanwalt des Kantons Zürich und Kommandant der Stadtpolizei Uster, heute Rechtsanwalt in Stäfa.">
   <h1 class="text-2xl font-bold">Zur Person</h1>
 
-  <div class="mt-16 lg:mt-32 max-w-4xl tracking-tight space-y-24">
+  <Image
+    src={portrait}
+    alt="Andreas Baumgartner in dunkelblauem Jackett und Halstuch, auf einem Weg neben einem Bahnviadukt"
+    widths={[640, 960, 1280, 1569]}
+    sizes="(min-width: 48rem) 55vw, 100vw"
+    loading="eager"
+    class="mt-16 lg:mt-32 w-full h-auto"
+  />
+
+  <div class="mt-32 lg:mt-48 max-w-4xl tracking-tight space-y-24">
     <p>
       Gut acht Jahre lang führte Dr. iur. Andreas Baumgartner als Staatsanwalt des Kantons Zürich Strafverfahren, zuletzt als Spezialist für Geldwäscherei, Rechtshilfe, Einziehung und Beamtendelikte. Er weiss, wie Behörden ermitteln, welche prozessualen Möglichkeiten bestehen und worauf es am Ende ankommt – gegebenenfalls auch vor Gericht.
     </p>
@@ -35,36 +44,29 @@ import snowboard from '../assets/andy-snowboard.jpg';
         {facts.map((fact) => <li>{fact}</li>)}
       </ul>
     </section>
+  </div>
 
-    <div class="mt-32 lg:mt-40 grid grid-cols-2 gap-12 lg:gap-16">
-      <Image
-        src={portrait}
-        alt="Andreas Baumgartner in dunkelblauem Jackett und Halstuch, auf einem Weg neben einem Bahnviadukt"
-        widths={[796, 1569]}
-        sizes="(min-width: 64rem) 398px, 50vw"
-        class="w-full aspect-4/5 object-cover object-[60%_center]"
-      />
-      <Image
-        src={park}
-        alt="Andreas Baumgartner sitzt im Herbst auf einer Holzbank in einem Park"
-        widths={[398, 612]}
-        sizes="(min-width: 64rem) 398px, 50vw"
-        class="w-full aspect-4/5 object-cover object-top"
-      />
-      <Image
-        src={snowboard}
-        alt="Andreas Baumgartner mit dem Snowboard in der Luft, über einer verschneiten Piste"
-        widths={[398, 796, 1169]}
-        sizes="(min-width: 64rem) 398px, 50vw"
-        class="w-full aspect-4/5 object-cover"
-      />
-      <Image
-        src={golf}
-        alt="Andreas Baumgartner beim Abschlag auf einem Golfplatz in den Bergen"
-        widths={[398, 796, 975]}
-        sizes="(min-width: 64rem) 398px, 50vw"
-        class="w-full aspect-4/5 object-cover object-left"
-      />
-    </div>
+  <div class="mt-64 lg:mt-96 grid grid-cols-3 gap-12 lg:gap-16">
+    <Image
+      src={park}
+      alt="Andreas Baumgartner sitzt im Herbst auf einer Holzbank in einem Park"
+      widths={[398, 612]}
+      sizes="(min-width: 48rem) 19vw, 33vw"
+      class="w-full aspect-4/5 object-cover object-top"
+    />
+    <Image
+      src={snowboard}
+      alt="Andreas Baumgartner mit dem Snowboard in der Luft, über einer verschneiten Piste"
+      widths={[398, 796, 1169]}
+      sizes="(min-width: 48rem) 19vw, 33vw"
+      class="w-full aspect-4/5 object-cover"
+    />
+    <Image
+      src={golf}
+      alt="Andreas Baumgartner beim Abschlag auf einem Golfplatz in den Bergen"
+      widths={[398, 796, 975]}
+      sizes="(min-width: 48rem) 19vw, 33vw"
+      class="w-full aspect-4/5 object-cover object-left"
+    />
   </div>
 </Base>
