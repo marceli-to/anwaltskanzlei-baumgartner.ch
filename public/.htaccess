@@ -1,3 +1,6 @@
 # Deployed with the site (see deploy.sh). Text files are UTF-8: without this
 # Apache sends text/plain without a charset and browsers garble llms.txt.
 AddCharset utf-8 .txt
+
+# The sitemap integration writes sitemap-index.xml; send the usual address there
+Redirect 301 /sitemap.xml /sitemap-index.xml
