@@ -33,14 +33,13 @@ All committed and pushed; deploy once more to see them on staging.
 ## Team page photos (2026-10-29)
 
 - Portrait by Henrik Nielsen (`andy-portrait.jpg`) as the hero right after "Zur Person", full content width, uncropped.
-- Below Eckdaten, not indented, three per row at every width: park portrait (`andy-park.jpg`, crop anchored to the top), snowboard, golf (`andy-golf.jpg`, anchored left). Gap above the grid 40 / 64 / 96 px (mobile / md / lg).
+- Below Eckdaten, not indented, three per row at every width: park portrait (`andy-park.jpg`), snowboard, golf (`andy-golf.jpg`, anchored left). Gap above the grid 40 / 64 / 96 px (mobile / md / lg).
 - Impressum, Bildnachweis: "Fotograf: Henrik Nielsen".
-- Both Nielsen portraits are still **screenshots** (1569 and 612 px wide, the park one trimmed of a white frame) and look soft on retina. The client has been asked for the originals: replace the files under the same names in `src/assets/`, check the crops.
-- Committed and pushed; not yet deployed to staging.
+- The two Nielsen portraits are the photographer's originals (2026-10-30), converted from Adobe RGB to sRGB and scaled to 2400 / 2000 px on the long side with `sips`. The hero is now 3:2 (the original's format); the park portrait is cropped to 4:5 from the centre.
+- `/sitemap.xml` redirects to `/sitemap-index.xml` (`public/.htaccess`).
 
 ## Open
 
-- Original files of the two portraits (see above).
 
 - Logo: the icon and favicons use a stand-in mark (condensed "A" on black) until there is a logo (`npm run assets`).
 - Impressum / Datenschutz texts not reviewed by a lawyer.
