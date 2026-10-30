@@ -1,6 +1,6 @@
 # Handoff: anwaltskanzlei-baumgartner.ch
 
-State as of 2026-10-26. Read this together with `README.md` (setup, structure, map, deployment).
+State as of 2026-10-30. Read this together with `README.md` (setup, structure, map, deployment).
 
 ## Where things stand
 
@@ -30,7 +30,17 @@ All committed and pushed; deploy once more to see them on staging.
 - **Blue ring on the menu close button:** `showModal()` focused the close button. The script now focuses the dialog itself (`tabindex="-1"`); the button keeps a white `focus-visible` ring for keyboards.
 - **Body text** raised on mobile from 17 px to 18 px (still 20 px at 1920), line height 1.25 → 1.35. Marcel still has to look at the long pages on a phone; 1.3 is the fallback if it feels loose.
 
+## Team page photos (2026-10-29)
+
+- Portrait by Henrik Nielsen (`andy-portrait.jpg`) as the hero right after "Zur Person", full content width, uncropped.
+- Below Eckdaten, not indented, three per row at every width: park portrait (`andy-park.jpg`, crop anchored to the top), snowboard, golf (`andy-golf.jpg`, anchored left). Gap above the grid 40 / 64 / 96 px (mobile / md / lg).
+- Impressum, Bildnachweis: "Fotograf: Henrik Nielsen".
+- Both Nielsen portraits are still **screenshots** (1569 and 612 px wide, the park one trimmed of a white frame) and look soft on retina. The client has been asked for the originals: replace the files under the same names in `src/assets/`, check the crops.
+- Committed and pushed; not yet deployed to staging.
+
 ## Open
+
+- Original files of the two portraits (see above).
 
 - Logo: the icon and favicons use a stand-in mark (condensed "A" on black) until there is a logo (`npm run assets`).
 - Impressum / Datenschutz texts not reviewed by a lawyer.
