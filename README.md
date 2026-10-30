@@ -29,11 +29,13 @@ The Kontakt page shows a Mapbox map (ported from the immosite.ch starter's `map`
 ## Deployment
 
 ```sh
-./deploy.sh --dry-run   # show what would change on the server
-./deploy.sh
+./deploy.sh --dry-run              # show what would change on staging
+./deploy.sh                        # staging
+./deploy.sh production --dry-run
+./deploy.sh production             # live site
 ```
 
-`deploy.sh` builds the committed state into `dist/` and syncs it with rsync to `/home/unofibem/www/staging.anwaltskanzlei-baumgartner.ch/public` on Hostpoint (the web root of https://staging.anwaltskanzlei-baumgartner.ch), deleting files that no longer exist. `.htaccess` comes from `public/`; for staging the script appends an `X-Robots-Tag: noindex` header and replaces `robots.txt` with `Disallow: /`; the server's `.well-known/` is left alone. No PHP or Node is needed on the server.
+`deploy.sh` builds the committed state into `dist/` and syncs it with rsync to `/home/unofibem/www/<domain>/public` on Hostpoint (`staging.anwaltskanzlei-baumgartner.ch` or `anwaltskanzlei-baumgartner.ch`), deleting files that no longer exist. `.htaccess` comes from `public/` and redirects http and `www.` to `https://` without www; for staging the script also appends an `X-Robots-Tag: noindex` header and replaces `robots.txt` with `Disallow: /`; the server's `.well-known/` is left alone. No PHP or Node is needed on the server.
 
 ## Icons and Open Graph image
 

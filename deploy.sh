@@ -1,20 +1,34 @@
 #!/bin/zsh
-# Deploys the committed state of this repository to staging.anwaltskanzlei-baumgartner.ch
-# (Hostpoint) over SSH.
-# Run from your Mac: ./deploy.sh  (add --dry-run to only show what would change)
+# Deploys the committed state of this repository to Hostpoint over SSH.
+# Run from your Mac:
+#   ./deploy.sh               staging.anwaltskanzlei-baumgartner.ch
+#   ./deploy.sh production    anwaltskanzlei-baumgartner.ch
+# Add --dry-run to only show what would change.
 #
 # The site is built locally into dist/ and synced to the web root, which Hostpoint
-# serves from .../staging.anwaltskanzlei-baumgartner.ch/public. .htaccess comes from
-# public/ plus a noindex header for staging; .well-known/ on the server is never deleted.
+# serves from .../<domain>/public. .htaccess comes from public/ (plus a noindex header
+# on staging); .well-known/ on the server is never deleted.
 set -euo pipefail
 cd "$(dirname "$0")"
 
 HOST=unofibem@anwaltskanzlei-baumgartner.ch
-DEST=/home/unofibem/www/staging.anwaltskanzlei-baumgartner.ch/public
-URL=https://staging.anwaltskanzlei-baumgartner.ch
-
+TARGET=staging
 DRY_RUN=()
-[[ ${1:-} == --dry-run ]] && DRY_RUN=(--dry-run --itemize-changes)
+for arg in "$@"; do
+  case $arg in
+    staging|production) TARGET=$arg ;;
+    --dry-run) DRY_RUN=(--dry-run --itemize-changes) ;;
+    *) echo "Usage: ./deploy.sh [staging|production] [--dry-run]"; exit 1 ;;
+  esac
+done
+
+if [[ $TARGET == production ]]; then
+  DOMAIN=anwaltskanzlei-baumgartner.ch
+else
+  DOMAIN=staging.anwaltskanzlei-baumgartner.ch
+fi
+DEST=/home/unofibem/www/$DOMAIN/public
+URL=https://$DOMAIN
 
 if [[ -n $(git status --porcelain) ]]; then
   echo "You have uncommitted changes. Commit them first; only committed code is deployed."
@@ -43,13 +57,15 @@ ln -s "$PWD/node_modules" "$STAGE/node_modules"
 
 # Keep staging out of search engines: a noindex header on every response, and a robots.txt
 # that blocks all crawlers instead of pointing them to the production sitemap
-printf '\n# Staging only (added by deploy.sh)\nHeader set X-Robots-Tag "noindex, nofollow"\n' >> "$STAGE/dist/.htaccess"
-printf 'User-agent: *\nDisallow: /\n' > "$STAGE/dist/robots.txt"
+if [[ $TARGET == staging ]]; then
+  printf '\n# Staging only (added by deploy.sh)\nHeader set X-Robots-Tag "noindex, nofollow"\n' >> "$STAGE/dist/.htaccess"
+  printf 'User-agent: *\nDisallow: /\n' > "$STAGE/dist/robots.txt"
+fi
 
 # Folders 755, files 644 (macOS ships openrsync, which has no --chmod)
 chmod -R u=rwX,go=rX "$STAGE/dist"
 
-echo "Uploading…"
+echo "Uploading to $TARGET…"
 # One connection (one password prompt): the remote side creates the web root before rsync starts
 rsync -rlptz --delete "${DRY_RUN[@]}" \
   --rsync-path "mkdir -p '$DEST' && rsync" \

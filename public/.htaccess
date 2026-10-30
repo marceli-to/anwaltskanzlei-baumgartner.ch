@@ -2,5 +2,14 @@
 # Apache sends text/plain without a charset and browsers garble llms.txt.
 AddCharset utf-8 .txt
 
+# One address: https, without www (staging is https already and has no www, so it passes).
+# Certificate validation under /.well-known/ stays reachable over plain http.
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/\.well-known/
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
 # The sitemap integration writes sitemap-index.xml; send the usual address there
 Redirect 301 /sitemap.xml /sitemap-index.xml

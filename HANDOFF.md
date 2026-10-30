@@ -6,7 +6,7 @@ State as of 2026-10-30. Read this together with `README.md` (setup, structure, m
 
 - Static Astro site for the Anwaltskanzlei Dr. iur. Andreas Baumgartner, Stäfa, built from the Adobe XD design (links in the README). All pages are done: Home, Rechtsgebiete, Team, Kontakt, Impressum, Datenschutz, 404, plus the mobile layout with the black overlay menu.
 - **Staging** at https://staging.anwaltskanzlei-baumgartner.ch, deployed with `./deploy.sh`. `master` is pushed to github.com/marceli-to/anwaltskanzlei-baumgartner.ch. No other branches.
-- **Production** (https://anwaltskanzlei-baumgartner.ch) is not set up yet. `deploy.sh` only knows staging.
+- **Production** (https://anwaltskanzlei-baumgartner.ch): set up on Hostpoint on 2026-10-30 (document root `www/anwaltskanzlei-baumgartner.ch/public`, `www.` as alias, DNS on Hostpoint). Deploy with `./deploy.sh production`. The SSL certificate was still being issued that day.
 
 ## Stack
 
@@ -18,7 +18,7 @@ State as of 2026-10-30. Read this together with `README.md` (setup, structure, m
 - `./deploy.sh --dry-run`, then `./deploy.sh`. Only committed code is deployed: it builds a clean copy (with the local `.env` copied in) and rsyncs `dist/` to `unofibem@anwaltskanzlei-baumgartner.ch:/home/unofibem/www/staging.anwaltskanzlei-baumgartner.ch/public` (the subdomain's document root).
 - Staging only: the script appends `Header set X-Robots-Tag "noindex, nofollow"` to `.htaccess` and replaces `robots.txt` with `Disallow: /`. The repo's own `robots.txt`, sitemap, canonicals and `llms.txt` all point to the production domain.
 - SSH needs Marcel's password (no key on the server), so Marcel runs the deploy himself.
-- For production: add a target to `deploy.sh` without the two staging steps, and check the document root in the Hostpoint panel.
+- `./deploy.sh production` skips the two staging steps. `public/.htaccess` redirects http and `www.` to `https://anwaltskanzlei-baumgartner.ch` (except `/.well-known/`), so deploy production only once the certificate is active, or https visitors get a certificate warning.
 
 ## Fixed after the first staging deploy (2026-10-26)
 
@@ -43,7 +43,7 @@ All committed and pushed; deploy once more to see them on staging.
 
 - Logo: the icon and favicons use a stand-in mark (condensed "A" on black) until there is a logo (`npm run assets`).
 - Impressum / Datenschutz texts not reviewed by a lawyer.
-- Production go-live: DNS / document root, deploy target, Mapbox already allows the domain.
+- Production go-live: first `./deploy.sh production` once the certificate is active, then check http → https, www → non-www, the Kontakt map, and submit the sitemap in Google Search Console.
 
 ## Working with Marcel
 
