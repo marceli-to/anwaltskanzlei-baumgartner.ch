@@ -53,7 +53,9 @@ echo "Building $(git rev-parse --short HEAD)…"
 git archive HEAD | tar -x -C "$STAGE"
 cp .env "$STAGE/.env"
 ln -s "$PWD/node_modules" "$STAGE/node_modules"
-(cd "$STAGE" && npm run build --silent)
+# GIT_DIR: the copy has no .git; the sitemap reads each page's last commit date from this repository
+REPO_GIT="$PWD/.git"
+(cd "$STAGE" && GIT_DIR="$REPO_GIT" npm run build --silent)
 
 # Keep staging out of search engines: a noindex header on every response, and a robots.txt
 # that blocks all crawlers instead of pointing them to the production sitemap
