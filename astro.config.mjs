@@ -1,11 +1,9 @@
 // @ts-check
 import { defineConfig, fontProviders } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://anwaltskanzlei-baumgartner.ch',
-  integrations: [sitemap()],
   // Fixed IPv4 address, and a different port than marceli.to so both can run at once
   server: { host: '127.0.0.1', port: 4322 },
   vite: {

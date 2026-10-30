@@ -36,7 +36,7 @@ All committed and pushed; deploy once more to see them on staging.
 - Below Eckdaten, not indented, three per row at every width: park portrait (`andy-park.jpg`), snowboard, golf (`andy-golf.jpg`, anchored left). Gap above the grid 40 / 64 / 96 px (mobile / md / lg).
 - Impressum, Bildnachweis: "Fotograf: Henrik Nielsen".
 - The two Nielsen portraits are the photographer's originals (2026-10-30), converted from Adobe RGB to sRGB and scaled to 2400 / 2000 px on the long side with `sips`. The hero is now 3:2 (the original's format); the park portrait is cropped to 4:5 from the centre.
-- `/sitemap.xml` redirects to `/sitemap-index.xml` (`public/.htaccess`).
+- Sitemap is a single `/sitemap.xml` from `src/pages/sitemap.xml.ts` (2026-10-30, replaced `@astrojs/sitemap`); the old `/sitemap-index.xml` and `/sitemap-0.xml` redirect there (`public/.htaccess`).
 
 ## Open
 

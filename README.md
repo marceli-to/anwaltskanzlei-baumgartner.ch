@@ -18,7 +18,7 @@ Herd proxies **https://anwaltskanzlei-baumgartner.ch.test** to the dev server (`
 - `src/pages/` – one file per page (Home, Rechtsgebiete, Team, Kontakt, Impressum, Datenschutz, 404). Texts are written directly in the pages.
 - `src/data/site.ts` – address, phone numbers, email and navigation, used across pages, the footer and the JSON-LD.
 - `src/data/content.ts` – the lists (Schwerpunkte, Rechtsgebiete, Eckdaten), shared by the pages and `llms.txt`.
-- `src/pages/llms.txt.ts`, `robots.txt.ts` – generated at build time; the sitemap comes from `@astrojs/sitemap`.
+- `src/pages/llms.txt.ts`, `robots.txt.ts`, `sitemap.xml.ts` – generated at build time; the sitemap lists every page in `src/pages/` except the 404.
 - `src/components/Panel.astro` – the photo panel with "Better Call Andy". Positions are pixels from the 1920 × 1080 XD artboards multiplied by `--u` (see `src/styles/global.css`).
 - `src/assets/` – images, optimised by Astro at build time.
 

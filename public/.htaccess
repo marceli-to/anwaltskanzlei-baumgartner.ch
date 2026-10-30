@@ -11,5 +11,26 @@ RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 
-# The sitemap integration writes sitemap-index.xml; send the usual address there
-Redirect 301 /sitemap.xml /sitemap-index.xml
+# The sitemap used to be sitemap-index.xml plus sitemap-0.xml (@astrojs/sitemap); now it is one /sitemap.xml
+Redirect 301 /sitemap-index.xml /sitemap.xml
+Redirect 301 /sitemap-0.xml /sitemap.xml
+
+AddType application/manifest+json .webmanifest
+
+# Unknown addresses get the site's own 404 page instead of Apache's
+ErrorDocument 404 /404.html
+
+# Caching. Files in /_astro/ (CSS, JS, images, fonts) have a content hash in their name,
+# so a changed file gets a new address and the old one can be kept for a year.
+# Everything else keeps its address across deploys: pages are revalidated on every
+# visit (a cheap 304 via ETag), so a deploy shows up immediately; icons, og.png and
+# the text files are kept for a day.
+<IfModule mod_headers.c>
+  Header set Cache-Control "public, max-age=86400"
+  <If "%{REQUEST_URI} =~ m#^/_astro/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  <ElseIf "%{REQUEST_URI} =~ m#(^|/|\.html)$#">
+    Header set Cache-Control "no-cache"
+  </ElseIf>
+</IfModule>
