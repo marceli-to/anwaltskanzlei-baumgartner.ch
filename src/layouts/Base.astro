@@ -1,7 +1,7 @@
 ---
 import { Font } from 'astro:assets';
 import '../styles/global.css';
-import { contact, site } from '../data/site';
+import { contact, map, site } from '../data/site';
 import Panel from '../components/Panel.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -14,9 +14,12 @@ interface Props {
 }
 
 const { title, description = site.description, noindex = false } = Astro.props;
-const fullTitle = title ? `${title} – ${site.name}` : `${site.name} – Recht am Zürichsee`;
+const fullTitle = title ? `${title} – ${site.name}` : 'Anwalt in Stäfa – Dr. iur. Andreas Baumgartner, Recht am Zürichsee';
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('/og.png', Astro.site).href;
+
+// The office marker, so the map and the structured data always show the same place ([longitude, latitude])
+const [longitude, latitude] = map.markers.find((m) => m.kind === 'office')!.coordinates;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -34,6 +37,7 @@ const jsonLd = {
     addressLocality: contact.city,
     addressCountry: contact.country,
   },
+  geo: { '@type': 'GeoCoordinates', latitude, longitude },
   areaServed: 'CH',
   image: ogImage,
   logo: new URL('/icon-512.png', Astro.site).href,
@@ -63,7 +67,7 @@ const jsonLd = {
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Better Call Andy – Anwaltskanzlei Dr. iur. Andreas Baumgartner, Recht am Zürichsee" />
+    <meta property="og:image:alt" content="Anwaltskanzlei Dr. iur. Andreas Baumgartner – Recht am Zürichsee" />
     <meta name="twitter:card" content="summary_large_image" />
 
     {/* Favicons, app icons and og.png are rendered from scripts/assets/ with `npm run assets` */}
