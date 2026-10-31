@@ -1,7 +1,7 @@
 export const site = {
   name: 'Anwaltskanzlei Dr. iur. Andreas Baumgartner',
   url: 'https://anwaltskanzlei-baumgartner.ch',
-  description: 'Anwaltskanzlei Dr. iur. Andreas Baumgartner in Stäfa am Zürichsee: Strafrecht, Wirtschaftsstrafrecht, Verwaltungs- und Polizeirecht, interne Untersuchungen und Zivilrecht.',
+  description: 'Anwalt in Stäfa am Zürichsee: Dr. iur. Andreas Baumgartner, ehemaliger Staatsanwalt des Kantons Zürich. Strafrecht, Verwaltungs- und Polizeirecht, Zivilrecht.',
 };
 
 export const contact = {
