@@ -7,14 +7,14 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
-  /** Page name, shown before the firm's name in the title; the homepage has none */
+  /** Page name, shown before "Dr. iur. Andreas Baumgartner, Anwalt in Stäfa" in the title; the homepage has none */
   title?: string;
   description?: string;
   noindex?: boolean;
 }
 
 const { title, description = site.description, noindex = false } = Astro.props;
-const fullTitle = title ? `${title} – ${site.name}` : 'Anwalt in Stäfa – Dr. iur. Andreas Baumgartner, Recht am Zürichsee';
+const fullTitle = title ? `${title} – Dr. iur. Andreas Baumgartner, Anwalt in Stäfa` : 'Anwalt in Stäfa – Dr. iur. Andreas Baumgartner, Recht am Zürichsee';
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('/og.png', Astro.site).href;
 
