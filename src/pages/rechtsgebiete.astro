@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import { strafrecht, areas } from '../data/content';
 import hammer from '../assets/hammer.webp';
@@ -21,12 +21,14 @@ const heading = 'text-lg font-bold';
           {strafrecht.map((item) => <li>{item}</li>)}
         </ul>
       </section>
-      <Image
+      <Picture
         src={hammer}
         alt=""
         widths={[396, 792]}
         sizes="(min-width: 64rem) 396px, 70vw"
-        class="w-2/3 lg:w-4/5 max-w-400 ml-auto mt-16 lg:mt-0 mix-blend-multiply"
+        formats={['avif', 'webp']}
+        pictureAttributes={{ class: 'block w-2/3 lg:w-4/5 max-w-400 ml-auto mt-16 lg:mt-0' }}
+        class="w-full h-auto mix-blend-multiply"
       />
     </div>
 

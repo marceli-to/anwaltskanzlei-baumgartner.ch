@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import { focus } from '../data/content';
 import waage from '../assets/waage.webp';
@@ -24,12 +24,14 @@ import waage from '../assets/waage.webp';
 
   {/* The scale sits on the right; from 1680 px the list moves up beside its lower half, as in the design (narrower, the heading would run into the scale) */}
   <div class="max-w-4xl mt-40 lg:mt-16 flex flex-col">
-    <Image
+    <Picture
       src={waage}
       alt=""
       widths={[336, 672]}
       sizes="(min-width: 64rem) 336px, 60vw"
-      class="w-3/5 max-w-336 self-end lg:mr-80 mb-16 min-[105rem]:mb-0 mix-blend-multiply"
+      formats={['avif', 'webp']}
+      pictureAttributes={{ class: 'block w-3/5 max-w-336 self-end lg:mr-80 mb-16 min-[105rem]:mb-0' }}
+      class="w-full h-auto mix-blend-multiply"
     />
     <section class="min-[105rem]:ml-128 min-[105rem]:-mt-96" aria-labelledby="schwerpunkte">
       <h2 id="schwerpunkte" class="text-xl font-bold">Unsere Schwerpunkte</h2>

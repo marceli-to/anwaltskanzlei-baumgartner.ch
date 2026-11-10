@@ -35,7 +35,7 @@ All committed and pushed; deploy once more to see them on staging.
 - Portrait by Henrik Nielsen (`andy-portrait.jpg`) as the hero right after "Zur Person", full content width, uncropped.
 - Below Eckdaten, not indented, three per row at every width: park portrait (`andy-park.jpg`), snowboard, golf (`andy-golf.jpg`, anchored left). Gap above the grid 40 / 64 / 96 px (mobile / md / lg).
 - Impressum, Bildnachweis: "Fotograf: Henrik Nielsen".
-- The two Nielsen portraits are the photographer's originals (2026-10-30), converted from Adobe RGB to sRGB and scaled to 2400 / 2000 px on the long side with `sips`. The hero is now 3:2 (the original's format); the park portrait is cropped to 4:5 from the centre.
+- The park portrait is the photographer's original (2026-10-30), converted from Adobe RGB to sRGB, scaled to 2000 px on the long side and cropped to 4:5 from the centre. The hero was replaced on 2026-11-10 with the client's new version ("Andreas Baumgratner_09_NEU.png", 2000 × 1334, 3:2), saved as JPEG q90 in sRGB; its `widths` now top out at 2000.
 - Sitemap is a single `/sitemap.xml` from `src/pages/sitemap.xml.ts` (2026-10-30, replaced `@astrojs/sitemap`); the old `/sitemap-index.xml` and `/sitemap-0.xml` redirect there (`public/.htaccess`).
 
 ## Open
