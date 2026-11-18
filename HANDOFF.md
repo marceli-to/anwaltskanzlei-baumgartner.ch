@@ -32,10 +32,11 @@ All committed and pushed; deploy once more to see them on staging.
 
 ## Team page photos (2026-10-29)
 
-- Portrait by Henrik Nielsen (`andy-portrait.jpg`) as the hero right after "Zur Person", full content width, uncropped.
+- Portrait by Henrik Nielsen (`andy-portrait.jpg`) as the hero right after "Zur Person", uncropped. Since 2026-11-18 it is the upright close-up ("Andreas Baumgratner_21", 2:3): full width on mobile, from md centred in a 3:2 box (the old hero's footprint) with white space left and right.
 - Below Eckdaten, not indented, three per row at every width: park portrait (`andy-park.jpg`), snowboard, golf (`andy-golf.jpg`, anchored left). Gap above the grid 40 / 64 / 96 px (mobile / md / lg).
 - Impressum, Bildnachweis: "Fotograf: Henrik Nielsen".
-- The park portrait is the photographer's original (2026-10-30), converted from Adobe RGB to sRGB, scaled to 2000 px on the long side and cropped to 4:5 from the centre. The hero was replaced on 2026-11-10 with the client's new version ("Andreas Baumgratner_09_NEU.png", 2000 × 1334, 3:2), saved as JPEG q90 in sRGB; its `widths` now top out at 2000.
+- 2026-11-18: hero and park portrait replaced with Henrik's second delivery (No. 21 and No. 20), both converted Adobe RGB → sRGB, 1334 × 2000, JPEG q90; the park photo is still cropped to 4:5 by CSS.
+- Before that, the park portrait was the photographer's original (2026-10-30), converted from Adobe RGB to sRGB, scaled to 2000 px on the long side and cropped to 4:5 from the centre. The hero was replaced on 2026-11-10 with the client's new version ("Andreas Baumgratner_09_NEU.png", 2000 × 1334, 3:2), saved as JPEG q90 in sRGB; its `widths` now top out at 2000.
 - Sitemap is a single `/sitemap.xml` from `src/pages/sitemap.xml.ts` (2026-10-30, replaced `@astrojs/sitemap`); the old `/sitemap-index.xml` and `/sitemap-0.xml` redirect there (`public/.htaccess`).
 
 ## Open
