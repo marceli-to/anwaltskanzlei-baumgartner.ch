@@ -1,12 +1,12 @@
 # Handoff: anwaltskanzlei-baumgartner.ch
 
-State as of 2026-10-30. Read this together with `README.md` (setup, structure, map, deployment).
+State as of 2026-11-18. Read this together with `README.md` (setup, structure, map, deployment).
 
 ## Where things stand
 
 - Static Astro site for the Anwaltskanzlei Dr. iur. Andreas Baumgartner, Stäfa, built from the Adobe XD design (links in the README). All pages are done: Home, Rechtsgebiete, Team, Kontakt, Impressum, Datenschutz, 404, plus the mobile layout with the black overlay menu.
 - **Staging** at https://staging.anwaltskanzlei-baumgartner.ch, deployed with `./deploy.sh`. `master` is pushed to github.com/marceli-to/anwaltskanzlei-baumgartner.ch. No other branches.
-- **Production** (https://anwaltskanzlei-baumgartner.ch): set up on Hostpoint on 2026-10-30 (document root `www/anwaltskanzlei-baumgartner.ch/public`, `www.` as alias, DNS on Hostpoint). Deploy with `./deploy.sh production`. The SSL certificate was still being issued that day.
+- **Production** (https://anwaltskanzlei-baumgartner.ch): set up on Hostpoint on 2026-10-30 (document root `www/anwaltskanzlei-baumgartner.ch/public`, `www.` as alias, DNS on Hostpoint). Deploy with `./deploy.sh production`. **Live since 2026-11-18** (certificate active, redirects, map and sitemap submission checked by Marcel).
 
 ## Stack
 
@@ -44,7 +44,6 @@ All committed and pushed; deploy once more to see them on staging.
 
 - Logo: the icon and favicons use a stand-in mark (condensed "A" on black) until there is a logo (`npm run assets`).
 - Impressum / Datenschutz texts not reviewed by a lawyer.
-- Production go-live: first `./deploy.sh production` once the certificate is active, then check http → https, www → non-www, the Kontakt map, and submit the sitemap in Google Search Console.
 
 ## Working with Marcel
 
